@@ -10,6 +10,10 @@ export interface IUser {
   username: string;
 }
 
+export interface INewUser extends IUser {
+  password: string;
+}
+
 export interface IFetchOptions {
   headers: IHeaderObject;
   body?: string;
@@ -17,4 +21,42 @@ export interface IFetchOptions {
 
 export interface IHeaderObject {
   [key: string]: string;
+}
+
+export interface INewJournalInfo extends IJournalInfo {
+  user_id: number;
+  //   entry_one: string;
+  //   entry_two: string;
+  //   entry_three: string;
+  //   entry_four: string;
+  //   entry_five: string;
+  //   created_at: string;
+}
+
+export interface IJournalInfo {
+  entry_one: string;
+  entry_two: string;
+  entry_three: string;
+  entry_four: string;
+  entry_five: string;
+  created_at: string;
+}
+
+export interface IJournalQuery {
+  user_id: number;
+  created_at: string;
+}
+
+export interface ITarotDescription {
+  descriptionLink: string;
+}
+
+export interface INewTarotDescription extends ITarotDescription {
+  user_id: number;
+  //descriptionLink: string;
+}
+
+export interface ITarotDescriptionQuery {
+  user_id: number;
+  description_id: number;
 }
