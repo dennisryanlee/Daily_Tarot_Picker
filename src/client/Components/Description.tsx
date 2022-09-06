@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Types from "../../../Types";
 import { useNavigate } from "react-router-dom";
 
 const Description = (props: Types.DescriptionCompProps) => {
   const nav = useNavigate();
-  const [descButtonPressed, setDescButtonPressed] = useState<boolean>(false);
+  const [descButtonPressed, setDescButtonPressed] = useState<boolean>(true);
   const [descToHide, setDescToHide] = useState<number>(0);
   const [descButtonHidden, setDescButtonHidden] = useState<boolean>(true);
 
@@ -13,67 +13,58 @@ const Description = (props: Types.DescriptionCompProps) => {
    */
   const showDescriptions = () => {
     console.log(`Showing descriptions`);
-    setDescButtonPressed(true);
+    setDescButtonPressed(false);
   };
 
-  /**
-   * Each Description Card has its own button, which will hide the description.
-   * This will also remove the "Hide this description" button on the other description card.
-   * @returns JSX containing the cards descriptions.
-   */
-  const descriptionsJSX = () => {
-    return (
-      <div>
-        {descToHide === 1 && (
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Card Description 1</h5>
-              <p className="card-text">Description 1 text here.</p>
-              {descButtonHidden && (
-                <button
-                  onClick={() => {
-                    setDescToHide(1);
-                    setDescButtonHidden(true);
-                  }}
-                >
-                  Hide this description
-                </button>
-              )}
-            </div>
-          </div>
-        )}
-
-        {descToHide === 2 && (
-          <div className="card">
-            <div className="card-body">
-              <h5 className="card-title">Card Description 2</h5>
-              <p className="card-text">Description 2 text here.</p>
-
-              {descButtonHidden && (
-                <button
-                  onClick={() => {
-                    setDescToHide(2);
-                    setDescButtonHidden(true);
-                  }}
-                >
-                  Hide this description
-                </button>
-              )}
-            </div>
-          </div>
-        )}
-      </div>
-    );
-  };
+  useEffect(() => {}, [descButtonPressed]);
 
   return (
     <div>
       <div>This is Description</div>
       <div>
-        <button type="button" onClick={() => showDescriptions()}>
-          Show Description
-        </button>
-        {descButtonPressed && descriptionsJSX()}
+        <button onClick={() => showDescriptions()}>Show Description</button>
+        {descButtonPressed && (
+          <div>
+            {descToHide === 1 && (
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Card Description 1</h5>
+                  <p className="card-text">Description 1 text here.</p>
+                  {descButtonHidden && (
+                    <button
+                      onClick={() => {
+                        setDescToHide(1);
+                        setDescButtonHidden(true);
+                      }}
+                    >
+                      Hide this description
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+
+            {descToHide === 2 && (
+              <div className="card">
+                <div className="card-body">
+                  <h5 className="card-title">Card Description 2</h5>
+                  <p className="card-text">Description 2 text here.</p>
+
+                  {descButtonHidden && (
+                    <button
+                      onClick={() => {
+                        setDescToHide(2);
+                        setDescButtonHidden(true);
+                      }}
+                    >
+                      Hide this description
+                    </button>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
         <div>
           <p>
             What thoughts do you have about the card and how it relates to your life? What new insights do you have
