@@ -8,15 +8,23 @@ import Journal from "./Journal";
 const MainView = (props: Types.MainViewCompProps) => {
   const nav = useNavigate();
 
+  const saveJournal = () => {
+    console.log(`Journal save has been pressed.`);
+  };
+
   return (
     <div>
-      <div>This is MainView</div>
+      <div>
+        <h1>Tarot Journal</h1>
+        <h3>"What should I be mindful of this week?"</h3>
+      </div>
       <hr></hr>
       <Card />
       <hr></hr>
-      <Description />
-      <hr></hr>
       <Journal />
+      <hr></hr>
+      <Description />
+      <button onClick={() => saveJournal()}>Save</button>
     </div>
   );
 };

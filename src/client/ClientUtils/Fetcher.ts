@@ -2,7 +2,6 @@
 import * as Types from "../../../Types";
 
 export const TOKEN_KEY = `token`;
-export const PLAYER_DATA_KEY = `playerGameData`;
 
 const Fetcher = async (url: string, method: string, data?: any) => {
   // token is any JWT token in localStorage
