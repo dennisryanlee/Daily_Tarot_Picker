@@ -20,20 +20,25 @@ const Description = (props: Types.DescriptionCompProps) => {
   useEffect(() => {}, [descButtonPressed, descToHide, descButtonHidden]);
 
   return (
-    <div>
+    <div className="d-flex flex-column justify-content-center align-items-center">
       <div>This is Description</div>
-      <div>
-        {!descButtonPressed && <button onClick={() => showDescriptions()}>Show Descriptions</button>}
+      <div className="text-center">
+        {!descButtonPressed && (
+          <button className="btn btn-primary col-1" onClick={() => showDescriptions()}>
+            Show Descriptions
+          </button>
+        )}
 
         {descButtonPressed && (
           <div>
             {descToHide != 1 && (
               <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Card Description 1</h5>
-                  <p className="card-text">Description 1 text here.</p>
+                <div className="card-body text-center">
+                  <h5 className="card-title text-center">Card Description 1</h5>
+                  <p className="card-text text-center">Description 1 text here.</p>
                   {descToHide != 2 && (
                     <button
+                      className="btn btn-primary col-1"
                       onClick={() => {
                         setDescToHide(1);
                         setDescButtonHidden(true);
@@ -48,12 +53,13 @@ const Description = (props: Types.DescriptionCompProps) => {
 
             {descToHide != 2 && (
               <div className="card">
-                <div className="card-body">
-                  <h5 className="card-title">Card Description 2</h5>
-                  <p className="card-text">Description 2 text here.</p>
+                <div className="card-body text-center">
+                  <h5 className="card-title text-center">Card Description 2</h5>
+                  <p className="card-text text-center">Description 2 text here.</p>
 
                   {descToHide != 1 && (
                     <button
+                      className="btn btn-primary col-1"
                       onClick={() => {
                         setDescToHide(2);
                         setDescButtonHidden(true);
@@ -67,12 +73,12 @@ const Description = (props: Types.DescriptionCompProps) => {
             )}
           </div>
         )}
-        <div>
-          <p>
+        <div className="d-flex flex-column justify-content-center align-items-center">
+          <h4 className="text-center my-3">
             What thoughts do you have about the card and how it relates to your life? What new insights do you have
             after reading the description?
-          </p>
-          <input type="text" id="journal3" name="journal3" />
+          </h4>
+          <textarea className="form-control" wrap="hard" id="journal3" name="journal3" />
         </div>
       </div>
     </div>

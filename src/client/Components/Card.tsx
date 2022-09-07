@@ -18,11 +18,15 @@ const Card = (props: Types.CardCompProps) => {
   };
 
   return (
-    <div>
-      <div>This is Card</div>
-      {cardChosen && <button onClick={() => drawCard()}>Choose your card</button>}
+    <div className="d-flex flex-column justify-content-center align-items-center">
+      <div className="text-center">This is Card</div>
+      {cardChosen && (
+        <button className="btn btn-primary col-1" onClick={() => drawCard()}>
+          Choose your card
+        </button>
+      )}
 
-      <div>
+      <div className="text-center">
         {/* <img src="" alt="" /> */}
         <div>Card will show up here</div>
       </div>

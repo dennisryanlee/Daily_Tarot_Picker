@@ -15,8 +15,8 @@ const MainView = (props: Types.MainViewCompProps) => {
   return (
     <div>
       <div>
-        <h1>Tarot Journal</h1>
-        <h3>"What should I be mindful of this week?"</h3>
+        <h1 className="text-center my-3">Tarot Journal</h1>
+        <h3 className="text-center mt-2">"What should I be mindful of this week?"</h3>
       </div>
       <hr></hr>
       <Card />
@@ -24,7 +24,11 @@ const MainView = (props: Types.MainViewCompProps) => {
       <Journal />
       <hr></hr>
       <Description />
-      <button onClick={() => saveJournal()}>Save</button>
+      <div className="text-center">
+        <button className="btn btn-primary" onClick={() => saveJournal()}>
+          Save
+        </button>
+      </div>
     </div>
   );
 };
