@@ -14,36 +14,22 @@ password VARCHAR(60) NOT NULL,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 */
-/* 1 user to many journals
+-- 1 user to many journals
+/* 
 CREATE TABLE Journal (
 journal_id INT AUTO_INCREMENT PRIMARY KEY,
 user_id INT,
+created_at DATE
+card INT,
 entry_one TEXT,
 entry_two TEXT,
 entry_three TEXT,
-entry_four TEXT,
-entry_five TEXT,
-created_at DATE
 );
 */
-/* 1 user to 1 description
-CREATE TABLE Descriptions (
-description_id INT AUTO_INCREMENT PRIMARY KEY,
-user_id INT,
-description_link_one TEXT,
-description_link_two TEXT,
-description_link_three TEXT
-)
-*/
--- REFERENCE TABLES
+
+-- REFERENCE TABLE
 CREATE TABLE Users_Journal (
 uj_id INT AUTO_INCREMENT PRIMARY KEY,
 user_id INT
 journal_id INT
-);
-
-CREATE TABLE Users_Descriptions (
-ud_id INT AUTO_INCREMENT PRIMARY KEY,
-user_id INT
-description_id INT
 );
