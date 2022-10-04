@@ -14,6 +14,7 @@ password VARCHAR(60) NOT NULL,
 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 */
+
 -- 1 user to many journals
 /* 
 CREATE TABLE Journal (
@@ -26,10 +27,3 @@ entry_two TEXT,
 entry_three TEXT,
 );
 */
-
--- REFERENCE TABLE
-CREATE TABLE Users_Journal (
-uj_id INT AUTO_INCREMENT PRIMARY KEY,
-user_id INT
-journal_id INT
-);
