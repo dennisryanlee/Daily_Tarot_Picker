@@ -38,7 +38,11 @@ const Description = (props: Types.DescriptionCompProps) => {
                   {expandButtonOnePressed ? (
                     <p className="card-text text-center">{props.tarotCard.description.one.desc}</p>
                   ) : (
-                    <p className="card-text text-center">{props.tarotCard.description.one.desc.substring(0, 200)}</p>
+                    <p className="card-text text-center">
+                      {props.tarotCard.description.one.desc.length > 200
+                        ? props.tarotCard.description.one.desc.substring(0, 200) + "..."
+                        : props.tarotCard.description.one.desc.substring(0, 200)}
+                    </p>
                   )}
 
                   <button
@@ -73,7 +77,11 @@ const Description = (props: Types.DescriptionCompProps) => {
                   {expandButtonTwoPressed ? (
                     <p className="card-text text-center">{props.tarotCard.description.two.desc}</p>
                   ) : (
-                    <p className="card-text text-center">{props.tarotCard.description.two.desc.substring(0, 200)}</p>
+                    <p className="card-text text-center">
+                      {props.tarotCard.description.two.desc.length > 200
+                        ? props.tarotCard.description.two.desc.substring(0, 200) + "..."
+                        : props.tarotCard.description.two.desc.substring(0, 200)}
+                    </p>
                   )}
 
                   <button
