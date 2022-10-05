@@ -8,6 +8,7 @@ export interface DescriptionCompProps {
   cardChosen: boolean;
 }
 export interface CardCompProps {
+  tarotCard: Card;
   cardChosen: boolean;
   drawCard: Function;
 }

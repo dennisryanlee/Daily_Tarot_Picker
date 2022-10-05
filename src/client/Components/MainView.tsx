@@ -34,16 +34,16 @@ const MainView = (props: Types.MainViewCompProps) => {
   const drawCard = async () => {
     // pick a random integer to serve as the index when choosing from the allcards array
     let cardNum = Math.floor(Math.random() * 78);
-    // set state for child component
-    setCardChosen(false);
-    // log for debugging
     // console.log(`Card ${cardNum} Drawn`);
     // fetch the card's image and description
     fetch(`/api/drawcard/${cardNum}`)
       .then((res) => {
+        // parse the response
         return res.json();
       })
       .then((card) => {
+        // set state for child component
+        setCardChosen(false);
         setTarotCard(card);
         console.log(card);
       })
@@ -73,7 +73,7 @@ const MainView = (props: Types.MainViewCompProps) => {
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
-          <Card cardChosen={cardChosen} drawCard={drawCard} />
+          <Card cardChosen={cardChosen} drawCard={drawCard} tarotCard={tarotCard} />
         </div>
       </div>
 

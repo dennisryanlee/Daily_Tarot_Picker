@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import * as Types from "../../../Types";
-import { useNavigate } from "react-router-dom";
 
 const Card = (props: Types.CardCompProps) => {
   return (
@@ -10,8 +9,11 @@ const Card = (props: Types.CardCompProps) => {
           Choose your card
         </button>
       )}
-
-      <div className="text-center">{/* <img src="" alt="" /> */}</div>
+      {!props.cardChosen && (
+        <div className="text-center">
+          <img src={`${props.tarotCard.url}`} alt={`${props.tarotCard.name}`} width="300" height="521" />
+        </div>
+      )}
     </div>
   );
 };
