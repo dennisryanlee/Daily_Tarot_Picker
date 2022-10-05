@@ -25,3 +25,13 @@ const App = (props: Types.AppProps) => {
 };
 
 export default App;
+
+/**
+ * app holds all components
+ * '/' and '/register' deal with logging users in and registering new users
+ * both send users to '/landing'
+ * '/landing' can send users to '/diary' and '/dailydraw'
+ * '/dailydraw' is where users pick their card and create journal entries
+ * after an entry is created, sends users to '/diary'
+ * '/diary' allows users to see their previous entries
+ */

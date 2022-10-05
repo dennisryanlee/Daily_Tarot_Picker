@@ -6,6 +6,7 @@ import Description from "./Description";
 import Journal from "./Journal";
 
 const MainView = (props: Types.MainViewCompProps) => {
+  const nav = useNavigate();
   const dummyCard = {
     name_short: "",
     name: "",
@@ -53,6 +54,8 @@ const MainView = (props: Types.MainViewCompProps) => {
   };
 
   const saveJournal = () => {
+    // send the user to the diary to view the entry they just made
+    nav("/diary");
     console.log(`Journal save has been pressed.`);
   };
 

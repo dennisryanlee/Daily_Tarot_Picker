@@ -10,6 +10,8 @@ const LandingPage = (props: Types.LandingPageCompProps) => {
   const goToJournals = () => {
     nav("/diary");
   };
+  //! should i fetch all journals here in anticipation of user navigating to diary?
+  // theyll end up there after daily draw anyway
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div>This is landing page</div>
