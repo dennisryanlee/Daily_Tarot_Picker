@@ -3,6 +3,9 @@ export interface LoginCompProps {}
 export interface NewUserCompProps {}
 export interface JournalCompProps {}
 export interface MainViewCompProps {}
+export interface JournalComponentProps {}
+export interface LandingPageCompProps {}
+export interface DiariesProps {}
 export interface DescriptionCompProps {
   tarotCard: Card;
   cardChosen: boolean;
@@ -30,22 +33,12 @@ export interface IHeaderObject {
   [key: string]: string;
 }
 
-export interface INewJournalInfo extends IJournalInfo {
-  user_id: number;
-  //   entry_one: string;
-  //   entry_two: string;
-  //   entry_three: string;
-  //   entry_four: string;
-  //   entry_five: string;
-  //   created_at: string;
-}
-
 export interface IJournalInfo {
+  user_id: number;
+  card_int: number;
   entry_one: string;
   entry_two: string;
   entry_three: string;
-  entry_four: string;
-  entry_five: string;
   created_at: string;
 }
 

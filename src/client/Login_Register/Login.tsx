@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import * as Types from "../../Types";
+import * as Types from "../../../Types";
 import { useNavigate } from "react-router-dom";
-import Fetcher, { TOKEN_KEY } from "../client/ClientUtils/Fetcher";
+import Fetcher, { TOKEN_KEY } from "../ClientUtils/Fetcher";
 
 const Loginpage = (props: Types.LoginCompProps) => {
   const nav = useNavigate();
@@ -47,7 +47,7 @@ const Loginpage = (props: Types.LoginCompProps) => {
     //     alert(error.message);
     //   });
 
-    nav("/dailydraw");
+    nav("/landing");
   };
 
   const handleEnterLogin = (e: React.KeyboardEvent<HTMLInputElement>) => {

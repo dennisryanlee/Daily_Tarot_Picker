@@ -1,8 +1,8 @@
-import * as Types from "../../Types";
+import * as Types from "../../../Types";
 import * as React from "react";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import Fetcher, { TOKEN_KEY } from "../client/ClientUtils/Fetcher";
+import Fetcher, { TOKEN_KEY } from "../ClientUtils/Fetcher";
 
 const NewUser = (props: Types.NewUserCompProps) => {
   //! swap for production
@@ -47,7 +47,7 @@ const NewUser = (props: Types.NewUserCompProps) => {
       //     console.error(error);
       //     alert(`Something went wrong, please try again: ${error.message}`);
       //   });
-      nav("/dailydraw");
+      nav("/landing");
     } catch (error) {
       console.log(error);
     }
