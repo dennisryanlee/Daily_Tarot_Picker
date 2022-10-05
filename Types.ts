@@ -2,8 +2,10 @@ export interface AppProps {}
 export interface LoginCompProps {}
 export interface NewUserCompProps {}
 export interface JournalCompProps {}
-export interface DescriptionCompProps {}
 export interface MainViewCompProps {}
+export interface DescriptionCompProps {
+  tarotCard: Card;
+}
 export interface CardCompProps {
   cardChosen: boolean;
   drawCard: Function;

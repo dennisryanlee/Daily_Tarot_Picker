@@ -6,7 +6,25 @@ import Description from "./Description";
 import Journal from "./Journal";
 
 const MainView = (props: Types.MainViewCompProps) => {
+  const dummyCard = {
+    name_short: "",
+    name: "",
+    value: "",
+    value_int: 0,
+    description: {
+      one: {
+        meaning: "",
+        desc: "",
+      },
+      two: {
+        meaning: "",
+        desc: "",
+      },
+    },
+    url: "",
+  };
   const [cardChosen, setCardChosen] = useState<boolean>(true);
+  const [tarotCard, setTarotCard] = useState<Types.Card>(dummyCard);
 
   /**
    * This chooses a random number which corresponds to a card.
@@ -19,14 +37,15 @@ const MainView = (props: Types.MainViewCompProps) => {
     // set state for child component
     setCardChosen(false);
     // log for debugging
-    console.log(`Card ${cardNum} Drawn`);
+    // console.log(`Card ${cardNum} Drawn`);
     // fetch the card's image and description
     fetch(`/api/drawcard/${cardNum}`)
       .then((res) => {
         return res.json();
       })
-      .then((res) => {
-        console.log({ msg: "the card is", res });
+      .then((card) => {
+        setTarotCard(card);
+        console.log(card);
       })
       .catch((err) => {
         console.log(err);
@@ -37,7 +56,9 @@ const MainView = (props: Types.MainViewCompProps) => {
     console.log(`Journal save has been pressed.`);
   };
 
-  useEffect(() => {}, [cardChosen]);
+  useEffect(() => {
+    console.log({ tarotCard });
+  }, [cardChosen, tarotCard]);
 
   return (
     <div className="container">
@@ -72,7 +93,7 @@ const MainView = (props: Types.MainViewCompProps) => {
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
-          <Description />
+          <Description tarotCard={tarotCard} />
         </div>
       </div>
 
