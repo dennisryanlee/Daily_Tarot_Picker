@@ -23,7 +23,7 @@ const Description = (props: Types.DescriptionCompProps) => {
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div className="text-center">
         {!descButtonPressed && (
-          <button className="btn btn-primary" onClick={() => showDescriptions()}>
+          <button className="btn btn-primary" disabled={props.cardChosen} onClick={() => showDescriptions()}>
             Show Descriptions
           </button>
         )}
@@ -35,7 +35,11 @@ const Description = (props: Types.DescriptionCompProps) => {
                 <div className="card-body text-center">
                   <h5 className="card-title text-center">Card Description 1</h5>
                   {/* use a substring for the description, expanding to the entire description when an 'expand' button is pressed*/}
-                  <p className="card-text text-center">{props.tarotCard.description.one.desc}</p>
+                  {expandButtonOnePressed ? (
+                    <p className="card-text text-center">{props.tarotCard.description.one.desc}</p>
+                  ) : (
+                    <p className="card-text text-center">{props.tarotCard.description.one.desc.substring(0, 200)}</p>
+                  )}
 
                   <button
                     className="btn btn-primary mx-2"
@@ -65,7 +69,12 @@ const Description = (props: Types.DescriptionCompProps) => {
               <div className="card col-6 mx-2">
                 <div className="card-body text-center">
                   <h5 className="card-title text-center">Card Description 2</h5>
-                  <p className="card-text text-center">{props.tarotCard.description.two.desc}</p>
+
+                  {expandButtonTwoPressed ? (
+                    <p className="card-text text-center">{props.tarotCard.description.two.desc}</p>
+                  ) : (
+                    <p className="card-text text-center">{props.tarotCard.description.two.desc.substring(0, 200)}</p>
+                  )}
 
                   <button
                     className="btn btn-primary mx-2"

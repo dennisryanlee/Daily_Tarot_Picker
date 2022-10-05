@@ -93,7 +93,7 @@ const MainView = (props: Types.MainViewCompProps) => {
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
-          <Description tarotCard={tarotCard} />
+          <Description tarotCard={tarotCard} cardChosen={cardChosen} />
         </div>
       </div>
 

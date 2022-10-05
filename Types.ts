@@ -5,6 +5,7 @@ export interface JournalCompProps {}
 export interface MainViewCompProps {}
 export interface DescriptionCompProps {
   tarotCard: Card;
+  cardChosen: boolean;
 }
 export interface CardCompProps {
   cardChosen: boolean;
