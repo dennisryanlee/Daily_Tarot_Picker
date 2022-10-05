@@ -7,6 +7,13 @@ const urls = require("./CardLinks.json");
 import * as fs from "fs";
 import * as path from "path";
 
+/**
+ * This card updater attaches the url gathered from the scraper utility to the corresponding card from cards.json
+ * and writes the new data to a new file called mergedcards.json
+ *
+ * mergedcards.json will be served from the server
+ */
+
 // const cards = AllCards.cards;
 
 // filter through the list of all cards, and select the specified 'suit'

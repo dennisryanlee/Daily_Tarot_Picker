@@ -46,17 +46,3 @@ export interface IJournalQuery {
   user_id: number;
   created_at: string;
 }
-
-export interface ITarotDescription {
-  descriptionLink: string;
-}
-
-export interface INewTarotDescription extends ITarotDescription {
-  user_id: number;
-  //descriptionLink: string;
-}
-
-export interface ITarotDescriptionQuery {
-  user_id: number;
-  description_id: number;
-}

@@ -1,7 +1,6 @@
 import * as mysql from "mysql"; // import mysql so that we can make requests from the database
 import Journals from "./JournalQueries";
 import Login from "./LoginQueries";
-import Descriptions from "./DescriptionQueries";
 import * as dotenv from "dotenv";
 import { DB_CONFIG } from "../config"; // import the database config object containing the connection info
 
@@ -29,5 +28,4 @@ export default {
   // this is where the tables from the database will be exported
   Journals,
   Login,
-  Descriptions,
 };
