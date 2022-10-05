@@ -4,7 +4,10 @@ export interface NewUserCompProps {}
 export interface JournalCompProps {}
 export interface DescriptionCompProps {}
 export interface MainViewCompProps {}
-export interface CardCompProps {}
+export interface CardCompProps {
+  cardChosen: boolean;
+  drawCard: Function;
+}
 
 export interface IUser {
   username: string;

@@ -1,21 +1,10 @@
-// /routes/api/api_index.ts
 //@ Current Route is /api
 
 import * as express from "express";
-
-// import usersRouter from "./userRoutes";
-// import blogRouter from "./blogRoutes";
-// import contactRouter from "./contactRoutes";
-// import donateRouter from "./donateRoutes";
-// import tagRouter from "./tagRoutes";
-// import { validateToken } from "../../Middleware";
+import cardsRouter from "./cards";
 
 const apiRouter = express.Router();
 
-// apiRouter.use("/users", validateToken, usersRouter);
-// apiRouter.use("/blogs", validateToken, blogRouter);
-// apiRouter.use("/contact", validateToken, contactRouter);
-// apiRouter.use("/donate", donateRouter);
-// apiRouter.use("/tags", validateToken, tagRouter);
+apiRouter.use("/drawcard", cardsRouter);
 
 export default apiRouter;

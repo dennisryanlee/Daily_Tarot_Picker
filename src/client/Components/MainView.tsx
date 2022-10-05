@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as Types from "../../../Types";
 import { useNavigate } from "react-router-dom";
 import Card from "./Card";
@@ -6,11 +6,35 @@ import Description from "./Description";
 import Journal from "./Journal";
 
 const MainView = (props: Types.MainViewCompProps) => {
-  const nav = useNavigate();
+  const [cardChosen, setCardChosen] = useState<boolean>(true);
+
+  /**
+   * This chooses a random number which corresponds to a card.
+   * The number will be used to fetch the card's image and description.
+   * This will also hide the choose card button.
+   */
+  const drawCard = async () => {
+    // pick a random integer
+    let cardNum = Math.floor(Math.random() * 79);
+    // set state for child component
+    setCardChosen(false);
+    // log for debugging
+    console.log(`Card ${cardNum} Drawn`);
+    // fetch the card's image and description
+    fetch("/api/drawcard")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   const saveJournal = () => {
     console.log(`Journal save has been pressed.`);
   };
+
+  useEffect(() => {}, [cardChosen]);
 
   return (
     <div className="container">
@@ -25,7 +49,7 @@ const MainView = (props: Types.MainViewCompProps) => {
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
-          <Card />
+          <Card cardChosen={cardChosen} drawCard={drawCard} />
         </div>
       </div>
 
