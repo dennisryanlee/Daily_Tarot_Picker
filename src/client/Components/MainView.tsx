@@ -14,16 +14,19 @@ const MainView = (props: Types.MainViewCompProps) => {
    * This will also hide the choose card button.
    */
   const drawCard = async () => {
-    // pick a random integer
-    let cardNum = Math.floor(Math.random() * 79);
+    // pick a random integer to serve as the index when choosing from the allcards array
+    let cardNum = Math.floor(Math.random() * 78);
     // set state for child component
     setCardChosen(false);
     // log for debugging
     console.log(`Card ${cardNum} Drawn`);
     // fetch the card's image and description
-    fetch("/api/drawcard")
+    fetch(`/api/drawcard/${cardNum}`)
       .then((res) => {
-        console.log(res);
+        return res.json();
+      })
+      .then((res) => {
+        console.log({ msg: "the card is", res });
       })
       .catch((err) => {
         console.log(err);

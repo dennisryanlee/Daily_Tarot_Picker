@@ -49,3 +49,20 @@ export interface IJournalQuery {
   user_id: number;
   created_at: string;
 }
+
+export interface Card {
+  name_short: string;
+  name: string;
+  value: string;
+  value_int: number;
+  description: Description;
+  url: string;
+}
+export interface Description {
+  one: OneOrTwo;
+  two: OneOrTwo;
+}
+export interface OneOrTwo {
+  meaning: string;
+  desc: string;
+}
