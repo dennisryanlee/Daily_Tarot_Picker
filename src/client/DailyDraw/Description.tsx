@@ -1,114 +1,60 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import * as Types from "../../../Types";
 
 const Description = (props: Types.DescriptionCompProps) => {
-  const [descButtonPressed, setDescButtonPressed] = useState<boolean>(false);
-  const [expandButtonOnePressed, setExpandButtonOnePressed] = useState<boolean>(false);
-  const [expandButtonTwoPressed, setExpandButtonTwoPressed] = useState<boolean>(false);
-  const [descToHide, setDescToHide] = useState<number>(0);
-  const [descButtonHidden, setDescButtonHidden] = useState<boolean>(true);
-
-  /**
-   * This function sets component state 'descButtonPressed' to true.
-   */
-  const showDescriptions = () => {
-    console.log(`Showing descriptions`);
-    setDescButtonPressed(true);
-    console.log(descButtonPressed);
-  };
-
-  useEffect(() => {}, [descButtonPressed, descToHide, descButtonHidden]);
-
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div className="text-center">
-        {!descButtonPressed && (
-          <button className="btn btn-primary" disabled={props.cardChosen} onClick={() => showDescriptions()}>
-            Show Descriptions
-          </button>
-        )}
-
-        {descButtonPressed && (
-          <div className="d-flex flex-row justify-content-center align-items-center">
-            {descToHide != 1 && (
-              <div className="card col-6 mx-2">
-                <div className="card-body text-center">
-                  <h5 className="card-title text-center">Card Description 1</h5>
-                  {/* use a substring for the description, expanding to the entire description when an 'expand' button is pressed*/}
-                  {expandButtonOnePressed ? (
-                    <p className="card-text text-center">{props.tarotCard.description.one.desc}</p>
-                  ) : (
-                    <p className="card-text text-center">
-                      {props.tarotCard.description.one.desc.length > 200
-                        ? props.tarotCard.description.one.desc.substring(0, 200) + "..."
-                        : props.tarotCard.description.one.desc.substring(0, 200)}
-                    </p>
-                  )}
-
-                  <button
-                    className="btn btn-primary mx-2"
-                    onClick={() => {
-                      setExpandButtonOnePressed(!expandButtonOnePressed);
-                    }}
-                  >
-                    {expandButtonOnePressed ? "Collapse" : "Expand"}
-                  </button>
-
-                  {descToHide != 2 && (
-                    <button
-                      className="btn btn-primary mx-2"
-                      onClick={() => {
-                        setDescToHide(1);
-                        setDescButtonHidden(true);
-                      }}
-                    >
-                      Hide
-                    </button>
-                  )}
-                </div>
+        <div className="accordion" id="accordionExample">
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="headingOne">
+              <button
+                className="accordion-button"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseOne"
+                aria-expanded="true"
+                aria-controls="collapseOne"
+              >
+                Description 1
+              </button>
+            </h2>
+            <div
+              id="collapseOne"
+              className="accordion-collapse collapse"
+              aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body">
+                <p>{props.tarotCard.description.one.desc}</p>
               </div>
-            )}
-
-            {descToHide != 2 && (
-              <div className="card col-6 mx-2">
-                <div className="card-body text-center">
-                  <h5 className="card-title text-center">Card Description 2</h5>
-
-                  {expandButtonTwoPressed ? (
-                    <p className="card-text text-center">{props.tarotCard.description.two.desc}</p>
-                  ) : (
-                    <p className="card-text text-center">
-                      {props.tarotCard.description.two.desc.length > 200
-                        ? props.tarotCard.description.two.desc.substring(0, 200) + "..."
-                        : props.tarotCard.description.two.desc.substring(0, 200)}
-                    </p>
-                  )}
-
-                  <button
-                    className="btn btn-primary mx-2"
-                    onClick={() => {
-                      setExpandButtonTwoPressed(!expandButtonTwoPressed);
-                    }}
-                  >
-                    {expandButtonTwoPressed ? "Collapse" : "Expand"}
-                  </button>
-
-                  {descToHide != 1 && (
-                    <button
-                      className="btn btn-primary mx-2"
-                      onClick={() => {
-                        setDescToHide(2);
-                        setDescButtonHidden(true);
-                      }}
-                    >
-                      Hide
-                    </button>
-                  )}
-                </div>
-              </div>
-            )}
+            </div>
           </div>
-        )}
+          <div className="accordion-item">
+            <h2 className="accordion-header" id="headingTwo">
+              <button
+                className="accordion-button collapsed"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#collapseTwo"
+                aria-expanded="false"
+                aria-controls="collapseTwo"
+              >
+                Description 2
+              </button>
+            </h2>
+            <div
+              id="collapseTwo"
+              className="accordion-collapse collapse"
+              aria-labelledby="headingTwo"
+              data-bs-parent="#accordionExample"
+            >
+              <div className="accordion-body">
+                <p>{props.tarotCard.description.two.desc}</p>
+              </div>
+            </div>
+          </div>
+        </div>
         <div className="d-flex flex-column justify-content-center align-items-center">
           <h4 className="text-center my-3">
             What thoughts do you have about the card and how it relates to your life? What new insights do you have

@@ -22,3 +22,9 @@ $theme-colors: (
 );
 
 @import "../../../node_modules/bootstrap/scss/bootstrap.scss";
+
+.collapsing {
+  -webkit-transition-delay: 0.2s;
+  transition-delay: 0.2;
+  transition: height 0.2 ease;
+}
