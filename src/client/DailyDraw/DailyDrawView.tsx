@@ -36,7 +36,7 @@ const MainView = (props: Types.MainViewCompProps) => {
     // pick a random integer to serve as the index when choosing from the allcards array
     let cardNum = Math.floor(Math.random() * 78);
     // console.log(`Card ${cardNum} Drawn`);
-    // fetch the card's image and description
+    // fetch the card's information
     fetch(`/api/drawcard/${cardNum}`)
       .then((res) => {
         // parse the response
@@ -46,7 +46,7 @@ const MainView = (props: Types.MainViewCompProps) => {
         // set state for child component
         setCardChosen(false);
         setTarotCard(card);
-        console.log(card);
+        // console.log(card);
       })
       .catch((err) => {
         console.log(err);
@@ -62,7 +62,7 @@ const MainView = (props: Types.MainViewCompProps) => {
   //! need to fetch all journals here in anticipation of finishing this draw
 
   useEffect(() => {
-    console.log({ tarotCard });
+    // console.log({ tarotCard });
   }, [cardChosen, tarotCard]);
 
   return (

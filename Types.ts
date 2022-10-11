@@ -9,6 +9,10 @@ export interface DiariesProps {}
 export interface NavbarCompProps {}
 export interface CardsViewCompProps {}
 export interface CardsDetailsCompProps {}
+export interface DescriptionBoxCompProps {
+  tarotCard: Card;
+  num: "one" | "two";
+}
 export interface DescriptionCompProps {
   tarotCard: Card;
   cardChosen: boolean;

@@ -15,14 +15,14 @@ cardsRouter.get("/:cardNum", (req, res, next) => {
   // select the card whose value matches that of the chosen card from all cards
   const cardToSend = ALLCARDS[cardNum];
   // respond with the card
-  console.log({ cardToSend });
+  // console.log({ cardToSend });
   res.status(200).json(cardToSend);
 });
 
 // get all cards
 cardsRouter.get("/", (req, res, next) => {
   // respond with all cards
-  console.log({ ALLCARDS });
+  console.log("fetched all cards");
   res.status(200).json(ALLCARDS);
 });
 
