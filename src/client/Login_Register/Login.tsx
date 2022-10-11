@@ -47,7 +47,7 @@ const Loginpage = (props: Types.LoginCompProps) => {
     //     alert(error.message);
     //   });
 
-    nav("/landing");
+    nav("/dailydraw");
   };
 
   const handleEnterLogin = (e: React.KeyboardEvent<HTMLInputElement>) => {

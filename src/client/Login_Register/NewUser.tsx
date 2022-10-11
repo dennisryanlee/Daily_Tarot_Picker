@@ -47,7 +47,7 @@ const NewUser = (props: Types.NewUserCompProps) => {
       //     console.error(error);
       //     alert(`Something went wrong, please try again: ${error.message}`);
       //   });
-      nav("/landing");
+      nav("/dailydraw");
     } catch (error) {
       console.log(error);
     }

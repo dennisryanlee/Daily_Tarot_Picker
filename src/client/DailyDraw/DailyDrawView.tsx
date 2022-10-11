@@ -59,6 +59,8 @@ const MainView = (props: Types.MainViewCompProps) => {
     console.log(`Journal save has been pressed.`);
   };
 
+  //! need to fetch all journals here in anticipation of finishing this draw
+
   useEffect(() => {
     console.log({ tarotCard });
   }, [cardChosen, tarotCard]);

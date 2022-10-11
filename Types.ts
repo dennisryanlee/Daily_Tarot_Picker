@@ -6,6 +6,7 @@ export interface MainViewCompProps {}
 export interface JournalComponentProps {}
 export interface LandingPageCompProps {}
 export interface DiariesProps {}
+export interface NavbarCompProps {}
 export interface DescriptionCompProps {
   tarotCard: Card;
   cardChosen: boolean;
