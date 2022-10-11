@@ -7,6 +7,7 @@ export interface JournalComponentProps {}
 export interface LandingPageCompProps {}
 export interface DiariesProps {}
 export interface NavbarCompProps {}
+export interface CardsViewCompProps {}
 export interface DescriptionCompProps {
   tarotCard: Card;
   cardChosen: boolean;

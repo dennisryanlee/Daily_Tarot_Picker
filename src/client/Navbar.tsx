@@ -11,6 +11,9 @@ const Navbar = (props: Types.NavbarCompProps) => {
   const goToJournals = () => {
     nav("/diary");
   };
+  const goToCards = () => {
+    nav("/cards");
+  };
   //! should i fetch all journals here in anticipation of user navigating to diary?
   // theyll end up there after daily draw anyway
   return (
@@ -28,6 +31,13 @@ const Navbar = (props: Types.NavbarCompProps) => {
         onClick={() => goToJournals()}
       >
         Diaries
+      </button>
+      <button
+        type="button"
+        className={`btn btn-${loc.pathname != "/cards" ? "primary" : "warning"} col-1 mx-2`}
+        onClick={() => goToCards()}
+      >
+        View Cards
       </button>
     </div>
   );
