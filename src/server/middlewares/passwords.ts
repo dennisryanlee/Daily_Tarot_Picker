@@ -17,8 +17,8 @@ export function compareHash(plaintextPassword: string, hashedPassword: string) {
 
 // Returns a signed JWT
 export function generateToken(username: string) {
-  const token = jwt.sign({ username }, config.JWT_CONFIG.jwtSecretKey, {
-    expiresIn: config.JWT_CONFIG.jwtExpireTime,
+  const token = jwt.sign({ username }, config.JWT_CONFIG.jwtSecretKey!, {
+    expiresIn: "2d",
   });
   return token;
 }
