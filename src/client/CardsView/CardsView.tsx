@@ -30,7 +30,7 @@ const CardsView = (props: Types.CardsViewCompProps) => {
             <img src={`${card.url}`} className="card-img-top" alt={`${card.name}`} width="300" height="521" />
             <div className="card-body">
               <h5 className="card-title">{card.name}</h5>
-              <Link to={`/cards/${card.value}`} className="btn btn-primary">
+              <Link to={`/cards/${card.name_short}`} className="btn btn-primary">
                 View descriptions
               </Link>
             </div>

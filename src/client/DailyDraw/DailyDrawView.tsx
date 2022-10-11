@@ -37,7 +37,7 @@ const MainView = (props: Types.MainViewCompProps) => {
     let cardNum = Math.floor(Math.random() * 78);
     // console.log(`Card ${cardNum} Drawn`);
     // fetch the card's information
-    fetch(`/api/drawcard/${cardNum}`)
+    fetch(`/api/drawcard/random/${cardNum}`)
       .then((res) => {
         // parse the response
         return res.json();
