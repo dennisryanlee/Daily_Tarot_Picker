@@ -26,7 +26,7 @@ const CardsView = (props: Types.CardsViewCompProps) => {
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div className="d-flex flex-wrap justify-content-center">
         {tarotCards.map((card) => (
-          <div className="card col-2 m-3">
+          <div className="card col-2 m-3 shadow">
             <img src={`${card.url}`} className="card-img-top" alt={`${card.name}`} width="300" height="521" />
             <div className="card-body">
               <h5 className="card-title">{card.name}</h5>

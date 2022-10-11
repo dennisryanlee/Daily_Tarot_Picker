@@ -11,8 +11,6 @@ import CardsView from "./CardsView/CardsView";
 import CardsDetails from "./CardsView/CardsDetails";
 
 const App = (props: Types.AppProps) => {
-  // useEffect(() => {}, []);
-
   return (
     <main>
       <Navbar />
