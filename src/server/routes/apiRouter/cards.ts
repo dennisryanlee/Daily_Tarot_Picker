@@ -8,6 +8,7 @@ const ALLCARDS = require(`../../MergedCards.json`);
 
 const cardsRouter = express.Router();
 
+// get a single card
 cardsRouter.get("/:cardNum", (req, res, next) => {
   // grab the card number from the req params
   const cardNum = Number(req.params.cardNum);
@@ -16,6 +17,13 @@ cardsRouter.get("/:cardNum", (req, res, next) => {
   // respond with the card
   console.log({ cardToSend });
   res.status(200).json(cardToSend);
+});
+
+// get all cards
+cardsRouter.get("/", (req, res, next) => {
+  // respond with all cards
+  console.log({ ALLCARDS });
+  res.status(200).json(ALLCARDS);
 });
 
 export default cardsRouter;

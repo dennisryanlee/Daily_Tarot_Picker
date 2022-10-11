@@ -7,7 +7,8 @@ import Loginpage from "./Login_Register/Login";
 import NewUser from "./Login_Register/NewUser";
 import Diaries from "./Diary/Diaries";
 import Navbar from "./Navbar";
-import CardsView from "./CardsView";
+import CardsView from "./CardsView/CardsView";
+import CardsDetails from "./CardsView/CardsDetails";
 
 const App = (props: Types.AppProps) => {
   // useEffect(() => {}, []);
@@ -21,6 +22,7 @@ const App = (props: Types.AppProps) => {
         <Route path="/dailydraw" element={<MainView />} />
         <Route path="/diary" element={<Diaries />} />
         <Route path="/cards" element={<CardsView />} />
+        <Route path="/cards/:cardID" element={<CardsDetails />} />
       </Routes>
     </main>
   );
