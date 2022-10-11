@@ -20,9 +20,9 @@ cardsRouter.get("/:cardname", (req, res, next) => {
 });
 
 // get a random card
-cardsRouter.get("/random/:cardNum", (req, res, next) => {
+cardsRouter.get("/random/", (req, res, next) => {
   // grab the card number from the req params
-  const cardNum = Number(req.params.cardNum);
+  const cardNum = Math.floor(Math.random() * 78);
   // select the card whose value matches that of the chosen card from all cards
   const cardToSend = ALLCARDS[cardNum];
   // respond with the card

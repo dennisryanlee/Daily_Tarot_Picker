@@ -14,6 +14,9 @@ const Navbar = (props: Types.NavbarCompProps) => {
   const goToCards = () => {
     nav("/cards");
   };
+  const goToLogin = () => {
+    nav("/");
+  };
   //! should i fetch all journals here in anticipation of user navigating to diary?
   // theyll end up there after daily draw anyway
   return (
@@ -40,6 +43,10 @@ const Navbar = (props: Types.NavbarCompProps) => {
             onClick={() => goToCards()}
           >
             View Cards
+          </button>
+
+          <button type="button" className={`btn btn-primary col-1 mx-2`} onClick={() => goToLogin()}>
+            Logout
           </button>
         </div>
       )}

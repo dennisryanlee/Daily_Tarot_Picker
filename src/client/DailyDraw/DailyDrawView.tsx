@@ -33,11 +33,9 @@ const MainView = (props: Types.MainViewCompProps) => {
    * This will also hide the choose card button.
    */
   const drawCard = async () => {
-    // pick a random integer to serve as the index when choosing from the allcards array
-    let cardNum = Math.floor(Math.random() * 78);
     // console.log(`Card ${cardNum} Drawn`);
     // fetch the card's information
-    fetch(`/api/drawcard/random/${cardNum}`)
+    fetch(`/api/drawcard/random/`)
       .then((res) => {
         // parse the response
         return res.json();
