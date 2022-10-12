@@ -23,7 +23,13 @@ const Journal = (props: Types.NO_PROPS) => {
           name="journal1"
           value={Journal1Text}
           onChange={(e) => handleJournal1Update(e)}
+          maxLength={5000}
         />
+        <div className="d-flex flex-row-reverse">
+          {Journal1Text.length >= 4750 && (
+            <div className="text-end border">{5000 - Journal1Text.length} characters remaining</div>
+          )}
+        </div>
 
         <div className="d-flex flex-column justify-content-center align-items-center">
           <h4 className="text-center my-3">
@@ -38,7 +44,11 @@ const Journal = (props: Types.NO_PROPS) => {
           name="journal2"
           value={Journal2Text}
           onChange={(e) => handleJournal2Update(e)}
+          maxLength={5000}
         />
+        <div className="">
+          {Journal2Text.length >= 4750 && <div>{5000 - Journal2Text.length} characters remaining</div>}
+        </div>
       </div>
     </div>
   );

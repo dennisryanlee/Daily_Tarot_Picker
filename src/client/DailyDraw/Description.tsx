@@ -4,9 +4,7 @@ import * as Types from "../../../Types";
 const Description = (props: Types.DescriptionCompProps) => {
   const [Journal3Text, setJournal3Text] = useState<string>("");
   const handleJournal3Update = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    if (Journal3Text.length + e.target.value.length <= 4999) {
-      setJournal3Text(e.target.value);
-    }
+    setJournal3Text(e.target.value);
   };
 
   return (
@@ -79,8 +77,9 @@ const Description = (props: Types.DescriptionCompProps) => {
             name="journal3"
             value={Journal3Text}
             onChange={(e) => handleJournal3Update(e)}
+            maxLength={5000}
           />
-          <div className="d-flex justify-content-end">
+          <div className="">
             {Journal3Text.length >= 4750 && <div>{5000 - Journal3Text.length} characters remaining</div>}
           </div>
         </div>
