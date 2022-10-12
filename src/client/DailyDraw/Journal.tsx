@@ -1,10 +1,7 @@
 import React, { useState } from "react";
 import * as Types from "../../../Types";
-import { useNavigate } from "react-router-dom";
 
 const Journal = (props: Types.NO_PROPS) => {
-  const nav = useNavigate();
-
   return (
     <div>
       <div className="d-flex flex-column justify-content-center align-items-center">

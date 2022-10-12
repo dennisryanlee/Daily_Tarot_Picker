@@ -31,17 +31,18 @@ export interface IHeaderObject {
 }
 
 export interface IJournalInfo {
+  journal_id?: number;
   user_id: number;
-  card_int: number;
+  card_name_short: string;
   entry_one: string;
   entry_two: string;
   entry_three: string;
-  created_at: string;
+  created_at?: string;
 }
 
 export interface IJournalQuery {
   user_id: number;
-  created_at: string;
+  journal_id: number;
 }
 
 // Tarot card Type
