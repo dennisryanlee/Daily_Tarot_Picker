@@ -8,7 +8,7 @@ const ALLCARDS = require(`../../MergedCards.json`);
 
 const cardsRouter = express.Router();
 
-// get a single card
+// get a single specific card
 cardsRouter.get("/:cardname", (req, res, next) => {
   // grab the card name from the req params
   const cardName = req.params.cardname;
@@ -19,7 +19,7 @@ cardsRouter.get("/:cardname", (req, res, next) => {
   res.status(200).json(cardToSend);
 });
 
-// get a random card
+// get a single random card
 cardsRouter.get("/random/", (req, res, next) => {
   // grab the card number from the req params
   const cardNum = Math.floor(Math.random() * 78);
