@@ -34,9 +34,10 @@ const MainView = (props: Types.NO_PROPS) => {
    */
   const drawCard = async () => {
     // fetch the card's information
-    fetch(`/api/drawcard/random/`)
+    fetch(`/api/drawcard/random`)
       .then((res) => {
         // parse the response
+        console.log(res);
         return res.json();
       })
       .then((card) => {
