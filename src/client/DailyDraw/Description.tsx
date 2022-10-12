@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import * as Types from "../../../Types";
 
 const Description = (props: Types.DescriptionCompProps) => {
+  const [Journal3Text, setJournal3Text] = useState<string>("");
+  const handleJournal3Update = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    if (Journal3Text.length + e.target.value.length <= 4999) {
+      setJournal3Text(e.target.value);
+    }
+  };
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div className="text-center">
@@ -65,7 +72,17 @@ const Description = (props: Types.DescriptionCompProps) => {
             What thoughts do you have about the card and how it relates to your life? What new insights do you have
             after reading the description?
           </h4>
-          <textarea className="form-control" wrap="hard" id="journal3" name="journal3" />
+          <textarea
+            className="form-control"
+            wrap="hard"
+            id="journal3"
+            name="journal3"
+            value={Journal3Text}
+            onChange={(e) => handleJournal3Update(e)}
+          />
+          <div className="d-flex justify-content-end">
+            {Journal3Text.length >= 4750 && <div>{5000 - Journal3Text.length} characters remaining</div>}
+          </div>
         </div>
       </div>
     </div>
