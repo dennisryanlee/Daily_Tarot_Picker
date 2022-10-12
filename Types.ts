@@ -54,6 +54,7 @@ export interface IJournalQuery {
   created_at: string;
 }
 
+// Tarot card Type
 export interface Card {
   name_short: string;
   name: string;
@@ -62,6 +63,7 @@ export interface Card {
   description: Description;
   url: string;
 }
+// Tarot card supprting Types
 export interface Description {
   one: OneOrTwo;
   two: OneOrTwo;

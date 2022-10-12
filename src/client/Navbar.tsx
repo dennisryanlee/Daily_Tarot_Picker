@@ -17,11 +17,11 @@ const Navbar = (props: Types.NavbarCompProps) => {
   const goToLogin = () => {
     nav("/");
   };
-  //! should i fetch all journals here in anticipation of user navigating to diary?
-  // theyll end up there after daily draw anyway
+
+  const OKtoDisplay = loc.pathname != "/register" && loc.pathname != "/";
   return (
     <>
-      {loc.pathname != "/" && (
+      {OKtoDisplay && (
         <div className="d-flex  justify-content-center mt-3">
           <button
             type="button"

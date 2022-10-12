@@ -13,7 +13,7 @@ cardsRouter.get("/:cardname", (req, res, next) => {
   // grab the card name from the req params
   const cardName = req.params.cardname;
   // select the card whose name matches that of the chosen card from all cards
-  const [cardToSend] = ALLCARDS.filter((card) => card.name_short === cardName);
+  const [cardToSend] = ALLCARDS.filter((card: Types.Card) => card.name_short === cardName);
   // respond with the card
   // console.log({ cardToSend });
   res.status(200).json(cardToSend);
