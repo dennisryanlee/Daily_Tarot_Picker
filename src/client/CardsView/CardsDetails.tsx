@@ -4,7 +4,7 @@ import { useNavigate, useLocation, useParams } from "react-router-dom";
 import DescriptionBox from "./DescriptionBox";
 import HR_Component from "../Components/HR";
 
-const CardsDetails = (props: Types.CardsDetailsCompProps) => {
+const CardsDetails = (props: Types.NO_PROPS) => {
   const { cardID } = useParams();
   const dummyCard = {
     name_short: "",

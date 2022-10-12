@@ -3,7 +3,7 @@ import * as Types from "../../../Types";
 import { useNavigate } from "react-router-dom";
 import Fetcher, { TOKEN_KEY } from "../ClientUtils/Fetcher";
 
-const Loginpage = (props: Types.LoginCompProps) => {
+const Loginpage = (props: Types.NO_PROPS) => {
   const nav = useNavigate();
 
   //! swap for production

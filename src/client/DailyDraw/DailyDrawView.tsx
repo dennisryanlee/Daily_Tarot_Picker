@@ -6,7 +6,7 @@ import Description from "./Description";
 import Journal from "./Journal";
 import HR_Component from "../Components/HR";
 
-const MainView = (props: Types.MainViewCompProps) => {
+const MainView = (props: Types.NO_PROPS) => {
   const nav = useNavigate();
   const dummyCard = {
     name_short: "",

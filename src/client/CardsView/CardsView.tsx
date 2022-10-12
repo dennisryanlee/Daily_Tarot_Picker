@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as Types from "../../../Types";
 import { Link } from "react-router-dom";
 
-const CardsView = (props: Types.CardsViewCompProps) => {
+const CardsView = (props: Types.NO_PROPS) => {
   const [tarotCards, setTarotCards] = useState<Types.Card[]>([]);
 
   // fetch all cards within a useEffect with an empty dependency array to avoid fetching multiple times

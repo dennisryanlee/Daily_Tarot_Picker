@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Types from "../../../Types";
 import { useNavigate } from "react-router-dom";
 
-const Journal = (props: Types.JournalCompProps) => {
+const Journal = (props: Types.NO_PROPS) => {
   const nav = useNavigate();
 
   return (

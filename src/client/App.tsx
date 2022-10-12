@@ -10,7 +10,7 @@ import Navbar from "./Navbar";
 import CardsView from "./CardsView/CardsView";
 import CardsDetails from "./CardsView/CardsDetails";
 
-const App = (props: Types.AppProps) => {
+const App = (props: Types.NO_PROPS) => {
   return (
     <main>
       <Navbar />

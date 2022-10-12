@@ -3,7 +3,7 @@ import * as Types from "../../../Types";
 import { useNavigate } from "react-router-dom";
 import JournalComponent from "./JournalComponent";
 
-const Diaries = (props: Types.DiariesProps) => {
+const Diaries = (props: Types.NO_PROPS) => {
   const nav = useNavigate();
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">

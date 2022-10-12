@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import * as Types from "../../Types";
 import { useNavigate, useLocation } from "react-router-dom";
 
-const Navbar = (props: Types.NavbarCompProps) => {
+const Navbar = (props: Types.NO_PROPS) => {
   const nav = useNavigate();
   const loc = useLocation();
   const goToDailydraw = () => {

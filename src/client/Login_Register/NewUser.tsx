@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Fetcher, { TOKEN_KEY } from "../ClientUtils/Fetcher";
 
-const NewUser = (props: Types.NewUserCompProps) => {
+const NewUser = (props: Types.NO_PROPS) => {
   //! swap for production
   //@=============================================================================
   // const [password_A, setPassword_A] = useState<string>("");

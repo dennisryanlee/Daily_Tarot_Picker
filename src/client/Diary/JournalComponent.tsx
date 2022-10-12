@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import * as Types from "../../../Types";
 
-const JournalComponent = (props: Types.JournalComponentProps) => {
+const JournalComponent = (props: Types.NO_PROPS) => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div>Date: date here</div>

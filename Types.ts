@@ -1,15 +1,4 @@
-export interface AppProps {}
-export interface LoginCompProps {}
-export interface NewUserCompProps {}
-export interface JournalCompProps {}
-export interface MainViewCompProps {}
-export interface JournalComponentProps {}
-export interface LandingPageCompProps {}
-export interface DiariesProps {}
-export interface NavbarCompProps {}
-export interface CardsViewCompProps {}
-export interface CardsDetailsCompProps {}
-export interface HR_ComponentProps {}
+export interface NO_PROPS {}
 export interface DescriptionBoxCompProps {
   tarotCard: Card;
   num: "one" | "two";
