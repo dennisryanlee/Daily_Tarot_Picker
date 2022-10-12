@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Card from "./Card";
 import Description from "./Description";
 import Journal from "./Journal";
+import HR_Component from "../Components/HR";
 
 const MainView = (props: Types.MainViewCompProps) => {
   const nav = useNavigate();
@@ -28,12 +29,10 @@ const MainView = (props: Types.MainViewCompProps) => {
   const [tarotCard, setTarotCard] = useState<Types.Card>(dummyCard);
 
   /**
-   * This chooses a random number which corresponds to a card.
-   * The number will be used to fetch the card's image and description.
+   * Requests a random card from the server
    * This will also hide the choose card button.
    */
   const drawCard = async () => {
-    // console.log(`Card ${cardNum} Drawn`);
     // fetch the card's information
     fetch(`/api/drawcard/random/`)
       .then((res) => {
@@ -41,7 +40,7 @@ const MainView = (props: Types.MainViewCompProps) => {
         return res.json();
       })
       .then((card) => {
-        // set state for child component
+        // set the card to state for child component, set state to hide choose card button
         setCardChosen(false);
         setTarotCard(card);
         // console.log(card);
@@ -70,9 +69,7 @@ const MainView = (props: Types.MainViewCompProps) => {
         <h3 className="text-center mt-2">"What should I be mindful of this week?"</h3>
       </div>
 
-      <div className="d-flex justify-content-center">
-        <hr style={{ width: "50%" }}></hr>
-      </div>
+      <HR_Component />
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
@@ -80,9 +77,7 @@ const MainView = (props: Types.MainViewCompProps) => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-center">
-        <hr style={{ width: "50%" }}></hr>
-      </div>
+      <HR_Component />
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
@@ -90,9 +85,7 @@ const MainView = (props: Types.MainViewCompProps) => {
         </div>
       </div>
 
-      <div className="d-flex justify-content-center">
-        <hr style={{ width: "50%" }}></hr>
-      </div>
+      <HR_Component />
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">

@@ -2,8 +2,6 @@
 
 import * as express from "express";
 import * as Types from "../../../../Types";
-// import the cards from the json file
-// import ALLCARDS from "../../MergedCards.json";
 const ALLCARDS = require(`../../MergedCards.json`);
 
 const cardsRouter = express.Router();
@@ -21,9 +19,9 @@ cardsRouter.get("/:cardname", (req, res, next) => {
 
 // get a single random card
 cardsRouter.get("/random/", (req, res, next) => {
-  // grab the card number from the req params
+  // choose a random number
   const cardNum = Math.floor(Math.random() * 78);
-  // select the card whose value matches that of the chosen card from all cards
+  // select the card whose place in the ALLCARDS array matches that of the chosen number
   const cardToSend = ALLCARDS[cardNum];
   // respond with the card
   // console.log({ cardToSend });

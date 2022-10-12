@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as Types from "../../../Types";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import DescriptionBox from "./DescriptionBox";
+import HR_Component from "../Components/HR";
 
 const CardsDetails = (props: Types.CardsDetailsCompProps) => {
   const { cardID } = useParams();
@@ -55,9 +56,7 @@ const CardsDetails = (props: Types.CardsDetailsCompProps) => {
             <img src={`${tarotCard.url}`} className="card-img-top" alt={`${tarotCard.name}`} />
             <div className="card-body">
               <DescriptionBox tarotCard={tarotCard} num={"one"} />
-              <div className="d-flex justify-content-center">
-                <hr style={{ width: "50%" }}></hr>
-              </div>
+              <HR_Component />
               <DescriptionBox tarotCard={tarotCard} num={"two"} />
               <div className="d-flex justify-content-center">
                 <button type="button" className={`btn btn-primary my-3`} onClick={() => goToCards()}>

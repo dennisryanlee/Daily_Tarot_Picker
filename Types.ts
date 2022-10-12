@@ -9,6 +9,7 @@ export interface DiariesProps {}
 export interface NavbarCompProps {}
 export interface CardsViewCompProps {}
 export interface CardsDetailsCompProps {}
+export interface HR_ComponentProps {}
 export interface DescriptionBoxCompProps {
   tarotCard: Card;
   num: "one" | "two";
