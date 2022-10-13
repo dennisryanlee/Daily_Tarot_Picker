@@ -1,3 +1,5 @@
+import { request } from "express";
+
 export interface NO_PROPS {}
 export interface DescriptionBoxCompProps {
   tarotCard: Card;
@@ -14,11 +16,16 @@ export interface CardCompProps {
 }
 
 export interface IUser {
+  user_id?: number;
   username: string;
+  password?: string;
 }
 
-export interface INewUser extends IUser {
-  password: string;
+// redefine the User object within Express as our own User with our defined types
+declare global {
+  namespace Express {
+    interface User extends IUser {}
+  }
 }
 
 export interface IFetchOptions {

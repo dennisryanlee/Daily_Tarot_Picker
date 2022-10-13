@@ -6,7 +6,7 @@ const FindUser = (column: string, value: string) =>
   Query<Types.IUser[]>("SELECT * FROM users WHERE ?? = ?", [column, value]);
 
 // used on register to create a new user
-const registerNewUser = (newUserInfo: Types.INewUser) => Query(`INSERT INTO users SET ?`, [newUserInfo]);
+const registerNewUser = (newUserInfo: Types.IUser) => Query(`INSERT INTO users SET ?`, [newUserInfo]);
 
 // delete a user account
 const deleteUser = (user_id: number) => Query(`DELETE FROM users WHERE user_id = ?`, [user_id]);

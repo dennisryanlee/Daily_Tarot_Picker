@@ -6,6 +6,7 @@ import * as Types from "../../../Types";
 import * as CONFIG from "../config";
 import { Application } from "express";
 import { compareHash } from "./Passwords";
+import Query from "../db";
 
 export function configurePassport(app: Application) {
   passport.serializeUser((user, done) => {
@@ -24,18 +25,17 @@ export function configurePassport(app: Application) {
         usernameField: "username",
         session: false,
       },
-      async (username, password, done) => {
+      async (email, password, done) => {
         try {
-          // query the DB for a player with the given username
-          let res = await MongoQuery.getPlayerInfo(username);
-          // if a response is returned, the player's username exists
+          // query the DB for a user with the given email;
+          let [userInfo] = await Query.Login.FindUser("email", email);
+          // if a response is returned, the user exists
           // console.log({ res });
-          let playerInfo = res;
           // check if the provided password matches the hashedPassword from the DB
-          if (res && compareHash(password, playerInfo.password!)) {
+          if (userInfo && compareHash(password, userInfo.password!)) {
             // if so, remove it from the playerInfo, and call done, passing forward the playerInfo
-            delete playerInfo.password;
-            done(null, playerInfo);
+            delete userInfo.password;
+            done(null, userInfo);
           } else {
             done(null, false);
           }
