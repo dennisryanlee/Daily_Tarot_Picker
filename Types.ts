@@ -1,6 +1,13 @@
 import { request } from "express";
 
 export interface NO_PROPS {}
+export interface DailyDrawCompProps {
+  setAllJournals: Function;
+  setAllJournalsFetchSuccess: Function;
+}
+export interface DiariesCompProps {
+  allJournals: IJournalInfo[];
+}
 export interface DescriptionBoxCompProps {
   tarotCard: Card;
   num: "one" | "two";

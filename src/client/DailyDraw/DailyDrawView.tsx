@@ -6,7 +6,7 @@ import Description from "./Description";
 import Journal from "./Journal";
 import HR_Component from "../Components/HR";
 
-const MainView = (props: Types.NO_PROPS) => {
+const DailyDraw = (props: Types.DailyDrawCompProps) => {
   const nav = useNavigate();
   const dummyCard = {
     name_short: "",
@@ -53,15 +53,32 @@ const MainView = (props: Types.NO_PROPS) => {
 
   const saveJournal = () => {
     // send the user to the diary to view the entry they just made
+    //! fetch save journal route here, nav in a dot then block
     nav("/diary");
     console.log(`Journal save has been pressed.`);
   };
 
-  //! need to fetch all journals here in anticipation of finishing this draw
-
+  // this useEffect fetches all journals in anticipation of finishing this journal so they'll be ready upon saving and navigating to diaries view
   useEffect(() => {
-    // console.log({ tarotCard });
-  }, [cardChosen, tarotCard]);
+    // make a fetch to all journals here
+    fetch(`/api/journal/`)
+      .then((res) => {
+        // parse the response
+        console.log(res);
+        return res.json();
+      })
+      .then((res) => {
+        // set the journals to state
+        props.setAllJournals(res);
+        // notify parent that journals were fetched successfully
+        props.setAllJournalsFetchSuccess(true);
+      })
+      .catch((err) => {
+        // notify parent that journals were fetched unsuccessfully
+        props.setAllJournalsFetchSuccess(false);
+        console.log(err);
+      });
+  }, []);
 
   return (
     <div className="container">
@@ -103,4 +120,4 @@ const MainView = (props: Types.NO_PROPS) => {
   );
 };
 
-export default MainView;
+export default DailyDraw;
