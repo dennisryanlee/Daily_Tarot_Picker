@@ -20,21 +20,21 @@ authRouter.post("/login", (req, res) => {});
 // Register an account
 // Middleware sends the response
 authRouter.post("/register", async (req, res) => {
-  // grab the user info from the req body
-  const { username, password } = req.body;
-
-  // check if a username and password was provided
-  if (!username || !password) {
-    return res.status(400).json({ message: "check your data, missing username or password" });
-  }
-
-  // hash the given password
-  const hashedPass = generateHash(password);
-
-  // bundle the username and hashed password for db query
-  const newUserInfo = { username, password: hashedPass };
-
   try {
+    // grab the user info from the req body
+    const { username, password } = req.body;
+
+    // check if a username and password was provided
+    if (!username || !password) {
+      return res.status(400).json({ message: "check your data, missing username or password" });
+    }
+
+    // hash the given password
+    const hashedPass = generateHash(password);
+
+    // bundle the username and hashed password for db query
+    const newUserInfo = { username, password: hashedPass };
+
     // query the database with a request to create a new user
     const DB_Response = await DB.Login.registerNewUser(newUserInfo);
 
