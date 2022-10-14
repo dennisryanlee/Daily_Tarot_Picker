@@ -5,6 +5,7 @@ import Card from "./Card";
 import Description from "./Description";
 import Journal from "./Journal";
 import HR_Component from "../Components/HR";
+import Fetcher from "../ClientUtils/Fetcher";
 
 const DailyDraw = (props: Types.DailyDrawCompProps) => {
   const nav = useNavigate();
@@ -27,6 +28,11 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
   };
   const [cardChosen, setCardChosen] = useState<boolean>(true);
   const [tarotCard, setTarotCard] = useState<Types.Card>(dummyCard);
+
+  // hold journals state here, since we make 1 fetch with information from 2 children components
+  const [Journal1Text, setJournal1Text] = useState<string>("");
+  const [Journal2Text, setJournal2Text] = useState<string>("");
+  const [Journal3Text, setJournal3Text] = useState<string>("");
 
   /**
    * Requests a random card from the server
@@ -51,11 +57,25 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
       });
   };
 
+  /**
+   * Sends a post req to save the journal entry, and if sucessful, navigates user to the diaries view
+   */
   const saveJournal = () => {
-    // send the user to the diary to view the entry they just made
-    //! fetch save journal route here, nav in a dot then block
-    nav("/diary");
-    console.log(`Journal save has been pressed.`);
+    Fetcher.POST(`/api/journal/`, {
+      // user_id,
+      card_name_short: tarotCard.name_short,
+      entry_one: Journal1Text,
+      entry_two: Journal2Text,
+      entry_three: Journal3Text,
+    })
+      .then(() => {
+        console.log(`Journal save has been pressed.`);
+        //! send the user to the diary to view the entry they just made
+        nav("/diary");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   // this useEffect fetches all journals in anticipation of finishing this journal so they'll be ready upon saving and navigating to diaries view
@@ -99,7 +119,12 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
-          <Journal />
+          <Journal
+            setJournal1Text={setJournal1Text}
+            Journal1Text={Journal1Text}
+            setJournal2Text={setJournal2Text}
+            Journal2Text={Journal2Text}
+          />
         </div>
       </div>
 
@@ -107,7 +132,12 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
 
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
-          <Description tarotCard={tarotCard} cardChosen={cardChosen} />
+          <Description
+            tarotCard={tarotCard}
+            cardChosen={cardChosen}
+            setJournal3Text={setJournal3Text}
+            Journal3Text={Journal3Text}
+          />
         </div>
       </div>
 

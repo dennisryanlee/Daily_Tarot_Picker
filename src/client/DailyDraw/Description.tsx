@@ -2,11 +2,6 @@ import React, { useState } from "react";
 import * as Types from "../../../Types";
 
 const Description = (props: Types.DescriptionCompProps) => {
-  const [Journal3Text, setJournal3Text] = useState<string>("");
-  const handleJournal3Update = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    setJournal3Text(e.target.value);
-  };
-
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div className="text-center">
@@ -75,12 +70,12 @@ const Description = (props: Types.DescriptionCompProps) => {
             wrap="hard"
             id="journal3"
             name="journal3"
-            value={Journal3Text}
-            onChange={(e) => handleJournal3Update(e)}
+            value={props.Journal3Text}
+            onChange={(e) => props.setJournal3Text(e)}
             maxLength={5000}
           />
           <div className="">
-            {Journal3Text.length >= 4750 && <div>{5000 - Journal3Text.length} characters remaining</div>}
+            {props.Journal3Text.length >= 4750 && <div>{5000 - props.Journal3Text.length} characters remaining</div>}
           </div>
         </div>
       </div>
