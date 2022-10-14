@@ -7,13 +7,8 @@ export interface JournalCompProps {
   setJournal2Text: Function;
   Journal2Text: string;
 }
-export interface DailyDrawCompProps {
-  setAllJournals: Function;
-  setAllJournalsFetchSuccess: Function;
-}
-export interface DiariesCompProps {
-  allJournals: IJournalInfo[];
-}
+export interface DailyDrawCompProps {}
+export interface DiariesCompProps {}
 export interface DescriptionBoxCompProps {
   tarotCard: Card;
   num: "one" | "two";

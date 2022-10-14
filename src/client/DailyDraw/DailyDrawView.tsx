@@ -78,28 +78,6 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
       });
   };
 
-  // this useEffect fetches all journals in anticipation of finishing this journal so they'll be ready upon saving and navigating to diaries view
-  useEffect(() => {
-    // make a fetch to all journals here
-    fetch(`/api/journal/`)
-      .then((res) => {
-        // parse the response
-        console.log(res);
-        return res.json();
-      })
-      .then((res) => {
-        // set the journals to state
-        props.setAllJournals(res);
-        // notify parent that journals were fetched successfully
-        props.setAllJournalsFetchSuccess(true);
-      })
-      .catch((err) => {
-        // notify parent that journals were fetched unsuccessfully
-        props.setAllJournalsFetchSuccess(false);
-        console.log(err);
-      });
-  }, []);
-
   return (
     <div className="container">
       <div>
