@@ -4,7 +4,6 @@ import { Route, Routes } from "react-router-dom";
 import * as Types from "../../Types";
 import DailyDraw from "./DailyDraw/DailyDrawView";
 import Loginpage from "./Login_Register/Login";
-import NewUser from "./Login_Register/NewUser";
 import Diaries from "./Diary/Diaries";
 import Navbar from "./Navbar";
 import CardsView from "./CardsView/CardsView";
@@ -16,7 +15,6 @@ const App = (props: Types.NO_PROPS) => {
       <Navbar />
       <Routes>
         <Route path="/" element={<Loginpage />} />
-        <Route path="/register" element={<NewUser />} />
         <Route path="/dailydraw" element={<DailyDraw />} />
         <Route path="/diary" element={<Diaries />} />
         <Route path="/cards" element={<CardsView />} />

@@ -39,7 +39,7 @@ const Fetcher = async (url: string, method: string, data?: any) => {
       return data;
       // if there is a bad response, return the data, and log
     } else {
-      console.log(`res was bad here`);
+      console.error(data);
       throw new Error(`Something went wrong`);
     }
   } catch (error) {

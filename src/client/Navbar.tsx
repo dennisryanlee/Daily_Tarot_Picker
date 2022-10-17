@@ -18,7 +18,7 @@ const Navbar = (props: Types.NO_PROPS) => {
     nav("/");
   };
 
-  const OKtoDisplay = loc.pathname != "/register" && loc.pathname != "/";
+  const OKtoDisplay = loc.pathname != "/";
   return (
     <>
       {OKtoDisplay && (

@@ -5,18 +5,18 @@ import * as express from "express";
 import { authenticate } from "passport";
 import DB from "../../db";
 import { generateHash, generateToken } from "../../middlewares/Passwords";
-// import * as Passport from "passport"
+import * as Passport from "passport";
 // import { giveTokenToNewUser, giveTokenToExistingUser, validateToken } from "../../Middleware";
 
 const authRouter = express.Router();
 
 //Auth test route
-authRouter.post(`/checkToken`, authenticate("jwt"), (req, res) => {
+authRouter.post(`/checkToken`, Passport.authenticate("jwt"), (req, res) => {
   res.json({ message: `valid token!` });
 });
 
 // Log a user in "/auth/login"
-authRouter.post("/login", authenticate("local"), (req, res) => {
+authRouter.post("/login", Passport.authenticate("local"), (req, res) => {
   // if there is an auth issue and req.user is undefined, respond with a 401
   if (!req.user) {
     return res.status(401).json({ message: "unknown auth error, rip" });

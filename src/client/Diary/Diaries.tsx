@@ -16,6 +16,7 @@ const Diaries = (props: Types.DiariesCompProps) => {
       })
       .then((res) => {
         // set the journals to state
+        console.log({ res });
         setAllJournals(res);
       })
       .catch((err) => {
@@ -27,9 +28,8 @@ const Diaries = (props: Types.DiariesCompProps) => {
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div>This is diaries page</div>
       <div>View old Journals below</div>
-      {allJournals.map((diary) => (
-        <DiaryComponent key={`diary-key-${diary.created_at}`} diary={diary} />
-      ))}
+      {allJournals &&
+        allJournals.map((diary) => <DiaryComponent key={`diary-key-${diary.created_at}`} diary={diary} />)}
     </div>
   );
 };
