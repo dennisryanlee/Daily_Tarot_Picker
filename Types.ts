@@ -1,6 +1,9 @@
 import { request } from "express";
 
 export interface NO_PROPS {}
+export interface DiaryCompProps {
+  diary: IJournalInfo;
+}
 export interface JournalCompProps {
   setJournal1Text: Function;
   Journal1Text: string;

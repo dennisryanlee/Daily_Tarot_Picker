@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as Types from "../../../Types";
 import { useNavigate } from "react-router-dom";
-import JournalComponent from "./JournalComponent";
+import DiaryComponent from "./DiaryComponent";
 
 const Diaries = (props: Types.DiariesCompProps) => {
   const nav = useNavigate();
@@ -27,10 +27,10 @@ const Diaries = (props: Types.DiariesCompProps) => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div>This is diaries page</div>
-      <div>View Old Journals below</div>
-      <JournalComponent />
-      <JournalComponent />
-      <JournalComponent />
+      <div>View old Journals below</div>
+      {allJournals.map((diary) => (
+        <DiaryComponent key={`diary-key-${diary.created_at}`} diary={diary} />
+      ))}
     </div>
   );
 };

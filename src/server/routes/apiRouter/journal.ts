@@ -36,6 +36,7 @@ journalRouter.get("/:id", async (req, res, next) => {
     const [journal] = await DB.Journals.readOneJournal({ user_id, journal_id });
 
     //! what happens if there is no journal for the given user_id and journal_id?
+    // journal should be an empty array, we can check for that on the front end
 
     // respond with the journal
     res.status(200).json({ message: "get one on journalRouter worked", journal });
