@@ -7,9 +7,14 @@ import Journal from "./Journal";
 import HR_Component from "../Components/HR";
 import Fetcher from "../ClientUtils/Fetcher";
 
+// define the maximum length for journal entries
+export const MAXJOURNALLENGTH = 5000;
+export const JOURNALLENGTHWARNING = 4750;
+
 const DailyDraw = (props: Types.DailyDrawCompProps) => {
   const nav = useNavigate();
-  const dummyCard = {
+  const [cardChosen, setCardChosen] = useState<boolean>(false);
+  const [tarotCard, setTarotCard] = useState<Types.Card>({
     name_short: "",
     name: "",
     value: "",
@@ -25,11 +30,9 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
       },
     },
     url: "",
-  };
-  const [cardChosen, setCardChosen] = useState<boolean>(true);
-  const [tarotCard, setTarotCard] = useState<Types.Card>(dummyCard);
+  });
 
-  // hold journals state here, since we make 1 fetch with information from 2 children components
+  // hold journal state here, since we make 1 fetch with information from 2 children components
   const [Journal1Text, setJournal1Text] = useState<string>("");
   const [Journal2Text, setJournal2Text] = useState<string>("");
   const [Journal3Text, setJournal3Text] = useState<string>("");
@@ -43,12 +46,12 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
     fetch(`/api/drawcard/random`)
       .then((res) => {
         // parse the response
-        console.log(res);
         return res.json();
       })
       .then((card) => {
         // set the card to state for child component, set state to hide choose card button
-        setCardChosen(false);
+        console.log(card);
+        setCardChosen(true);
         setTarotCard(card);
         // console.log(card);
       })
@@ -61,8 +64,13 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
    * Sends a post req to save the journal entry, and if sucessful, navigates user to the diaries view
    */
   const saveJournal = () => {
+    // ensure a card was chosen and that the journal entries have been filled in
+    if (!Journal1Text || !Journal2Text || !Journal3Text || !tarotCard.name_short) {
+      alert(`Please ensure that the journal entries are filled in.`);
+      return;
+    }
+
     Fetcher.POST(`/api/journal/`, {
-      // user_id,
       card_name_short: tarotCard.name_short,
       entry_one: Journal1Text,
       entry_two: Journal2Text,
@@ -88,8 +96,13 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
       <HR_Component />
 
       <div className="row justify-content-center">
-        <div className="col-12 col-md-10">
-          <Card cardChosen={cardChosen} drawCard={drawCard} tarotCard={tarotCard} />
+        <div className="d-flex justify-content-center col-12 col-md-10">
+          {!cardChosen && (
+            <button className="btn btn-primary" onClick={() => drawCard()}>
+              Choose your card
+            </button>
+          )}
+          {cardChosen && <Card tarotCard={tarotCard} />}
         </div>
       </div>
 
@@ -98,6 +111,7 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
       <div className="row justify-content-center">
         <div className="col-12 col-md-10">
           <Journal
+            tarotCard={tarotCard}
             setJournal1Text={setJournal1Text}
             Journal1Text={Journal1Text}
             setJournal2Text={setJournal2Text}
@@ -120,7 +134,7 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
       </div>
 
       <div className="text-center">
-        <button className="btn btn-primary mt-4" onClick={() => saveJournal()}>
+        <button className="btn btn-primary mt-4" disabled={!tarotCard.name} onClick={() => saveJournal()}>
           Save
         </button>
       </div>

@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import * as Types from "../../../Types";
+import { JOURNALLENGTHWARNING, MAXJOURNALLENGTH } from "./DailyDrawView";
 
 const Description = (props: Types.DescriptionCompProps) => {
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div className="text-center">
-        {!props.cardChosen ? (
+        {props.cardChosen ? (
           <div className="accordion" id="accordionExample">
             <div className="accordion-item">
               <h2 className="accordion-header" id="headingOne">
@@ -70,12 +71,15 @@ const Description = (props: Types.DescriptionCompProps) => {
             wrap="hard"
             id="journal3"
             name="journal3"
+            disabled={!props.tarotCard.name}
             value={props.Journal3Text}
-            onChange={(e) => props.setJournal3Text(e)}
-            maxLength={5000}
+            onChange={(e) => props.setJournal3Text(e.target.value)}
+            maxLength={MAXJOURNALLENGTH}
           />
           <div className="">
-            {props.Journal3Text.length >= 4750 && <div>{5000 - props.Journal3Text.length} characters remaining</div>}
+            {props.Journal3Text.length >= JOURNALLENGTHWARNING && (
+              <div>{MAXJOURNALLENGTH - props.Journal3Text.length} characters remaining</div>
+            )}
           </div>
         </div>
       </div>

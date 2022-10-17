@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as Types from "../../../Types";
 
 const JournalComponent = ({ diary }: Types.DiaryCompProps) => {
-  const dummyCard = {
+  const [tarotCard, setTarotCard] = useState<Types.Card>({
     name_short: "",
     name: "",
     value: "",
@@ -18,8 +18,7 @@ const JournalComponent = ({ diary }: Types.DiaryCompProps) => {
       },
     },
     url: "",
-  };
-  const [tarotCard, setTarotCard] = useState<Types.Card>(dummyCard);
+  });
 
   // useEffect to fetch the card that was drawn for this diary
   useEffect(() => {

@@ -5,6 +5,7 @@ export interface DiaryCompProps {
   diary: IJournalInfo;
 }
 export interface JournalCompProps {
+  tarotCard: Card;
   setJournal1Text: Function;
   Journal1Text: string;
   setJournal2Text: Function;
@@ -24,8 +25,6 @@ export interface DescriptionCompProps {
 }
 export interface CardCompProps {
   tarotCard: Card;
-  cardChosen: boolean;
-  drawCard: Function;
 }
 
 export interface IUser {

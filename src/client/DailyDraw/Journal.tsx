@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import * as Types from "../../../Types";
+import { JOURNALLENGTHWARNING, MAXJOURNALLENGTH } from "./DailyDrawView";
 
 const Journal = (props: Types.JournalCompProps) => {
   return (
@@ -14,12 +15,13 @@ const Journal = (props: Types.JournalCompProps) => {
           id="journal1"
           name="journal1"
           value={props.Journal1Text}
-          onChange={(e) => props.setJournal1Text(e)}
-          maxLength={5000}
+          onChange={(e) => props.setJournal1Text(e.target.value)}
+          disabled={!props.tarotCard.name}
+          maxLength={MAXJOURNALLENGTH}
         />
         <div className="d-flex flex-row-reverse">
-          {props.Journal1Text.length >= 4750 && (
-            <div className="text-end border">{5000 - props.Journal1Text.length} characters remaining</div>
+          {props.Journal1Text.length >= JOURNALLENGTHWARNING && (
+            <div className="text-end border">{MAXJOURNALLENGTH - props.Journal1Text.length} characters remaining</div>
           )}
         </div>
 
@@ -35,11 +37,14 @@ const Journal = (props: Types.JournalCompProps) => {
           id="journal2"
           name="journal2"
           value={props.Journal2Text}
-          onChange={(e) => props.setJournal2Text(e)}
-          maxLength={5000}
+          onChange={(e) => props.setJournal2Text(e.target.value)}
+          disabled={!props.tarotCard.name}
+          maxLength={MAXJOURNALLENGTH}
         />
         <div className="">
-          {props.Journal2Text.length >= 4750 && <div>{5000 - props.Journal2Text.length} characters remaining</div>}
+          {props.Journal2Text.length >= JOURNALLENGTHWARNING && (
+            <div>{MAXJOURNALLENGTH - props.Journal2Text.length} characters remaining</div>
+          )}
         </div>
       </div>
     </div>

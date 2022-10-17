@@ -6,7 +6,12 @@ import HR_Component from "../Components/HR";
 
 const CardsDetails = (props: Types.NO_PROPS) => {
   const { cardID } = useParams();
-  const dummyCard = {
+  const nav = useNavigate();
+  const goToCards = () => {
+    nav("/cards");
+  };
+
+  const [tarotCard, setTarotCard] = useState<Types.Card>({
     name_short: "",
     name: "",
     value: "",
@@ -22,13 +27,7 @@ const CardsDetails = (props: Types.NO_PROPS) => {
       },
     },
     url: "",
-  };
-  const nav = useNavigate();
-  const goToCards = () => {
-    nav("/cards");
-  };
-
-  const [tarotCard, setTarotCard] = useState<Types.Card>(dummyCard);
+  });
 
   useEffect(() => {
     // fetch the card's information
