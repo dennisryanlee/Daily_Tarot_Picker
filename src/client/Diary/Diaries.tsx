@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from "react";
 import * as Types from "../../../Types";
-import { useNavigate } from "react-router-dom";
 import DiaryComponent from "./DiaryComponent";
 
 const Diaries = (props: Types.DiariesCompProps) => {
-  const nav = useNavigate();
   const [allJournals, setAllJournals] = useState<Types.IJournalInfo[]>([]);
 
   // this useEffect fetches all journals
@@ -24,6 +22,7 @@ const Diaries = (props: Types.DiariesCompProps) => {
         console.log(err);
       });
   }, []);
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div>This is diaries page</div>

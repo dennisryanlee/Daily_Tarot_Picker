@@ -25,10 +25,10 @@ export function configurePassport(app: Application) {
         usernameField: "username",
         session: false,
       },
-      async (email, password, done) => {
+      async (username, password, done) => {
         try {
           // query the DB for a user with the given email;
-          let [userInfo] = await Query.Login.FindUser("email", email);
+          let [userInfo] = await Query.Login.FindUser("username", username);
           // if a response is returned, the user exists
           // console.log({ res });
           // check if the provided password matches the hashedPassword from the DB

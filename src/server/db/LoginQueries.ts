@@ -1,7 +1,7 @@
 import { Query } from ".";
 import * as Types from "../../../Types";
 
-// used on login
+// used on login (column can be used for username OR email)
 const FindUser = (column: string, value: string) =>
   Query<Types.IUser[]>("SELECT * FROM users WHERE ?? = ?", [column, value]);
 

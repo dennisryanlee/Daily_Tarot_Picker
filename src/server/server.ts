@@ -1,11 +1,18 @@
 import * as express from "express";
 import baseRouter from "./routes";
 import * as path from "path";
+import { configurePassport } from "./middlewares/passport";
 
 const app = express();
 
+// configure passport to work with express server
+configurePassport(app);
+
+// serve up the public directory
 app.use(express.static("public"));
 app.use(express.json()); // allows for req.body parsing
+
+// all routes stem from baseRouter
 app.use(baseRouter);
 
 // establishes paths for client to use

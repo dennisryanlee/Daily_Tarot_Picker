@@ -37,17 +37,24 @@ const JournalComponent = ({ diary }: Types.DiaryCompProps) => {
         console.log(err);
       });
   }, []);
+
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center">
-      <div>{diary.created_at}</div>
-      <div>{diary.card_name_short}</div>
-      <div>
+    <>
+      <div className="card">
+        <h6>
+          {diary.created_at} | {diary.card_name_short}
+        </h6>
         <img src={`${tarotCard.url}`} className="card-img-top" alt={`${tarotCard.name}`} width="300" height="521" />
+        <div className="card-body">
+          <h5 className="card-title">Entry 1</h5>
+          <p>{diary.entry_one}</p>
+          <h5 className="card-title">Entry 2</h5>
+          <p>{diary.entry_two}</p>
+          <h5 className="card-title">Entry 3</h5>
+          <p>{diary.entry_three}</p>
+        </div>
       </div>
-      <div>{diary.entry_one}</div>
-      <div>{diary.entry_two}</div>
-      <div>{diary.entry_three}</div>
-    </div>
+    </>
   );
 };
 

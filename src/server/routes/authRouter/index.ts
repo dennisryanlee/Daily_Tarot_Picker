@@ -2,23 +2,37 @@
 //@ Current Route is /auth
 
 import * as express from "express";
+import { authenticate } from "passport";
 import DB from "../../db";
-import { generateHash } from "../../middlewares/Passwords";
+import { generateHash, generateToken } from "../../middlewares/Passwords";
+// import * as Passport from "passport"
 // import { giveTokenToNewUser, giveTokenToExistingUser, validateToken } from "../../Middleware";
 
 const authRouter = express.Router();
 
 //Auth test route
-authRouter.post(`/checkToken`, (req, res) => {
+authRouter.post(`/checkToken`, authenticate("jwt"), (req, res) => {
   res.json({ message: `valid token!` });
 });
 
 // Log a user in "/auth/login"
-// Middleware sends the response
-authRouter.post("/login", (req, res) => {});
+authRouter.post("/login", authenticate("local"), (req, res) => {
+  // if there is an auth issue and req.user is undefined, respond with a 401
+  if (!req.user) {
+    return res.status(401).json({ message: "unknown auth error, rip" });
+  }
+
+  // grab the username from the request
+  const username = req.user.username;
+
+  // sign and send a token
+  const token = generateToken(username);
+
+  // log the user in
+  res.status(200).json({ message: "Successfully created new user", token });
+});
 
 // Register an account
-// Middleware sends the response
 authRouter.post("/register", async (req, res) => {
   try {
     // grab the user info from the req body
@@ -36,14 +50,13 @@ authRouter.post("/register", async (req, res) => {
     const newUserInfo = { username, password: hashedPass };
 
     // query the database with a request to create a new user
-    const DB_Response = await DB.Login.registerNewUser(newUserInfo);
+    await DB.Login.registerNewUser(newUserInfo);
 
-    // grab the insertId, and pass it to the client
-    const user_id = DB_Response.insertId;
+    // sign and send a token
+    const token = generateToken(username);
 
-    //! also sign and send a token
-
-    res.status(200).json({ message: "Successfully created new user", user_id });
+    // log the user in
+    res.status(200).json({ message: "Successfully created new user", token });
   } catch (error) {
     console.log(error);
     return res.status(500).json({ message: "general unknown server error lol" });
