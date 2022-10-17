@@ -10,7 +10,12 @@ const journalRouter = express.Router();
 journalRouter.get("/", async (req, res, next) => {
   try {
     // grab the user_id from the req body and ensure it is treated as a number
-    const user_id = Number(req.body.user_id);
+    const user_id = req.user?.user_id;
+
+    // if any data is missing, return and respond with an error message
+    if (!user_id) {
+      return res.status(401).json({ message: "could not get all journals, missing data" });
+    }
 
     // query the db, given the user_id
     const journals = await DB.Journals.readAllJournals(user_id);
@@ -24,10 +29,16 @@ journalRouter.get("/", async (req, res, next) => {
 });
 
 // get one journal
+//@ implement this when adding diary sorting functionality
 journalRouter.get("/:id", async (req, res, next) => {
   try {
     // grab the user_id from the req body and ensure it is treated as a number
-    const user_id = Number(req.body.user_id);
+    const user_id = req.user?.user_id;
+
+    // if any data is missing, return and respond with an error message
+    if (!user_id) {
+      return res.status(401).json({ message: "could not get journal, missing data" });
+    }
 
     // grab the journal_id from the req params and ensure it is treated as a number
     const journal_id = Number(req.params.id);
@@ -49,8 +60,16 @@ journalRouter.get("/:id", async (req, res, next) => {
 // save a new journal
 journalRouter.post("/", async (req, res, next) => {
   try {
+    // grab the user_id from the req user
+    const user_id = req.user?.user_id;
+
     // grab the required information from the req body
-    const { user_id, card_name_short, entry_one, entry_two, entry_three } = req.body;
+    const { card_name_short, entry_one, entry_two, entry_three } = req.body;
+
+    // if any data is missing, return and respond with an error message
+    if (!user_id || !card_name_short || !entry_one || !entry_two || !entry_three) {
+      return res.status(400).json({ message: "could not save journal, missing data" });
+    }
 
     // query the db with the new journal info
     const DB_Res = await DB.Journals.createNewJournal({ user_id, card_name_short, entry_one, entry_two, entry_three });

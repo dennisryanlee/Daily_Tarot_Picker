@@ -2,31 +2,34 @@
 //@ Current Route is /auth
 
 import * as express from "express";
-import { authenticate } from "passport";
 import DB from "../../db";
 import { generateHash, generateToken } from "../../middlewares/Passwords";
 import * as Passport from "passport";
-// import { giveTokenToNewUser, giveTokenToExistingUser, validateToken } from "../../Middleware";
 
 const authRouter = express.Router();
 
 //Auth test route
-authRouter.post(`/checkToken`, Passport.authenticate("jwt"), (req, res) => {
+authRouter.post(`/checkToken`, Passport.authenticate("jwt", { session: false }), (req, res) => {
   res.json({ message: `valid token!` });
 });
 
 // Log a user in "/auth/login"
-authRouter.post("/login", Passport.authenticate("local"), (req, res) => {
+authRouter.post("/login", Passport.authenticate("local", { session: false }), (req, res) => {
   // if there is an auth issue and req.user is undefined, respond with a 401
   if (!req.user) {
     return res.status(401).json({ message: "unknown auth error, rip" });
   }
 
-  // grab the username from the request
-  const username = req.user.username;
+  // grab the username and user_id from the request
+  const { username, user_id } = req.user;
+
+  // check if the username and user_id are valid
+  if (!username || !user_id) {
+    return res.status(403).json({ message: "unable to login" });
+  }
 
   // sign and send a token
-  const token = generateToken(username);
+  const token = generateToken(username, user_id);
 
   // log the user in
   res.status(200).json({ message: "Successfully created new user", token });
@@ -49,11 +52,11 @@ authRouter.post("/register", async (req, res) => {
     // bundle the username and hashed password for db query
     const newUserInfo = { username, password: hashedPass };
 
-    // query the database with a request to create a new user
-    await DB.Login.registerNewUser(newUserInfo);
+    // query the database with a request to create a new user, saving the insertID
+    const { insertId } = await DB.Login.registerNewUser(newUserInfo);
 
     // sign and send a token
-    const token = generateToken(username);
+    const token = generateToken(username, insertId);
 
     // log the user in
     res.status(200).json({ message: "Successfully created new user", token });

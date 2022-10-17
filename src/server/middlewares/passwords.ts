@@ -15,9 +15,9 @@ export function compareHash(plaintextPassword: string, hashedPassword: string) {
   return bcrypt.compareSync(plaintextPassword, hashedPassword);
 }
 
-// Returns a signed JWT
-export function generateToken(username: string) {
-  const token = jwt.sign({ username }, config.JWT_CONFIG.jwtSecretKey!, {
+// Returns a signed JWT which includes the username and user_id
+export function generateToken(username: string, user_id: number) {
+  const token = jwt.sign({ username, user_id }, config.JWT_CONFIG.jwtSecretKey!, {
     expiresIn: "2d",
   });
   return token;

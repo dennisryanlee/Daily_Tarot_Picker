@@ -6,7 +6,7 @@ const ALLCARDS = require(`../../MergedCards.json`);
 
 const cardsRouter = express.Router();
 
-//@ random card route must come before specific card, otherwise 'random' will be interpreted as a variable for a card's name
+//* random card route must come before specific card, otherwise 'random' will be interpreted as a variable for a card's name
 // get a single random card
 cardsRouter.get("/random", (req, res, next) => {
   try {
