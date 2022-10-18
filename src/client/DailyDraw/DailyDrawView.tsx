@@ -43,11 +43,7 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
    */
   const drawCard = async () => {
     // fetch the card's information
-    fetch(`/api/drawcard/random`)
-      .then((res) => {
-        // parse the response
-        return res.json();
-      })
+    Fetcher.GET(`/api/drawcard/random`)
       .then((card) => {
         // set the card to state for child component, set state to hide choose card button
         console.log(card);
