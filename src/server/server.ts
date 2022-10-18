@@ -17,7 +17,7 @@ app.use(baseRouter);
 
 // establishes paths for client to use
 // add any views where the user should be able to refresh on
-const clientPaths = ["/", "/dailydraw", "/diary", "/cards", "/cards/:cardID", "/register"];
+const clientPaths = ["/", "/dailydraw", "/diary", "/cards", "/cards/:cardID", "/register", "/singlediary"];
 
 // allows for refreshing on client paths
 app.get(clientPaths, (req, res) => res.sendFile(path.join(__dirname, "../public/index.html")));

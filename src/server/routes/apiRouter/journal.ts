@@ -21,7 +21,7 @@ journalRouter.get("/", async (req, res, next) => {
     const journals = await DB.Journals.readAllJournals(user_id);
 
     // respond with the journals
-    res.status(200).json({ message: "get on journalRouter worked", journals });
+    res.status(200).json(journals);
   } catch (error) {
     console.log(error);
     res.status(500).json({ message: "unable to get all journals" });
@@ -60,7 +60,7 @@ journalRouter.get("/:id", async (req, res, next) => {
 // save a new journal
 journalRouter.post("/", async (req, res, next) => {
   try {
-    // grab the user_id from the req user
+    // grab the user_id from the req user, supplied from passport
     const user_id = req.user?.user_id;
 
     // grab the required information from the req body

@@ -32,7 +32,7 @@ authRouter.post("/login", Passport.authenticate("local", { session: false }), (r
   const token = generateToken(username, user_id);
 
   // log the user in
-  res.status(200).json({ message: "Successfully created new user", token });
+  res.status(200).json({ message: "Successfully logged in", token });
 });
 
 // Register an account
@@ -61,8 +61,15 @@ authRouter.post("/register", async (req, res) => {
     // log the user in
     res.status(200).json({ message: "Successfully created new user", token });
   } catch (error) {
-    console.log(error);
-    return res.status(500).json({ message: "general unknown server error lol" });
+    // if unable to create a new user, return a message
+    if ("sqlMessage" in error) {
+      console.log(error);
+      return res.status(500).json({ message: "database error" });
+    } else {
+      // otherwise, return a different message
+      console.log(error);
+      return res.status(500).json({ message: "general unknown server error lol" });
+    }
   }
 });
 
