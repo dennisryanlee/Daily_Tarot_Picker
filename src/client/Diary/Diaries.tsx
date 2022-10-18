@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as Types from "../../../Types";
+import Fetcher from "../ClientUtils/Fetcher";
 import DiaryComponent from "./DiaryComponent";
 
 const Diaries = (props: Types.DiariesCompProps) => {
@@ -8,12 +9,7 @@ const Diaries = (props: Types.DiariesCompProps) => {
   // this useEffect fetches all journals
   useEffect(() => {
     // make a fetch to all journals here
-    fetch(`/api/journal/`)
-      .then((res) => {
-        // parse the response
-        console.log(res);
-        return res.json();
-      })
+    Fetcher.GET(`/api/journal/`)
       .then((res) => {
         // set the journals to state
         console.log({ res });
@@ -25,11 +21,14 @@ const Diaries = (props: Types.DiariesCompProps) => {
   }, []);
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center">
-      <div>This is diaries page</div>
-      <div>View old Journals below</div>
-      {allJournals &&
-        allJournals.map((diary) => <DiaryComponent key={`diary-key-${diary.created_at}`} diary={diary} />)}
+    <div className="d-flex mt-4">
+      {allJournals && (
+        <div className="row justify-content-center">
+          {allJournals.map((diary) => (
+            <DiaryComponent key={`diary-key-${diary.journal_id}`} diary={diary} />
+          ))}
+        </div>
+      )}
     </div>
   );
 };
