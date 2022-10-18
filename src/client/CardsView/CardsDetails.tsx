@@ -3,6 +3,7 @@ import * as Types from "../../../Types";
 import { useNavigate, useLocation, useParams } from "react-router-dom";
 import DescriptionBox from "./DescriptionBox";
 import HR_Component from "../Components/HR";
+import Fetcher from "../ClientUtils/Fetcher";
 
 const CardsDetails = (props: Types.NO_PROPS) => {
   const { cardID } = useParams();
@@ -31,11 +32,7 @@ const CardsDetails = (props: Types.NO_PROPS) => {
 
   useEffect(() => {
     // fetch the card's information
-    fetch(`/api/drawcard/${cardID}`)
-      .then((res) => {
-        // parse the response
-        return res.json();
-      })
+    Fetcher.GET(`/api/drawcard/${cardID}`)
       .then((card) => {
         setTarotCard(card);
         // console.log(card);

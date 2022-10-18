@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import * as Types from "../../../Types";
 import { Link } from "react-router-dom";
+import Fetcher from "../ClientUtils/Fetcher";
 
 const CardsView = (props: Types.NO_PROPS) => {
   const [tarotCards, setTarotCards] = useState<Types.Card[]>([]);
@@ -8,11 +9,7 @@ const CardsView = (props: Types.NO_PROPS) => {
   // fetch all cards within a useEffect with an empty dependency array to avoid fetching multiple times
   useEffect(() => {
     // send a get request to the API endpoint to retrieve all the cards
-    fetch(`/api/drawcard/`)
-      .then((res) => {
-        // parse the response
-        return res.json();
-      })
+    Fetcher.GET(`/api/drawcard/`)
       .then((cards) => {
         // set the cards to state
         setTarotCards(cards);
