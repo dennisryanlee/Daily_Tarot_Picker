@@ -8,6 +8,7 @@ import Diaries from "./Diary/Diaries";
 import Navbar from "./Navbar";
 import CardsView from "./CardsView/CardsView";
 import CardsDetails from "./CardsView/CardsDetails";
+import SingleDiary from "./Diary/SingleDiary";
 
 const App = (props: Types.NO_PROPS) => {
   return (
@@ -19,6 +20,7 @@ const App = (props: Types.NO_PROPS) => {
         <Route path="/diary" element={<Diaries />} />
         <Route path="/cards" element={<CardsView />} />
         <Route path="/cards/:cardID" element={<CardsDetails />} />
+        <Route path="/singlediary" element={<SingleDiary />} />
       </Routes>
     </main>
   );
