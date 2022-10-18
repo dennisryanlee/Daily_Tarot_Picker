@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import * as Types from "../../Types";
 import { useNavigate, useLocation } from "react-router-dom";
+import Fetcher from "./ClientUtils/Fetcher";
 
 const Navbar = (props: Types.NO_PROPS) => {
   const nav = useNavigate();
@@ -18,7 +19,18 @@ const Navbar = (props: Types.NO_PROPS) => {
     nav("/");
   };
 
+  // determines whether the user is on the login page
   const OKtoDisplay = loc.pathname != "/";
+
+  // upon every page change / navigation, recheck the token and if it is expired, log the user out
+  useEffect(() => {
+    if (OKtoDisplay) {
+      Fetcher.POST(`/auth/checkToken`, null).catch(() => {
+        goToLogin();
+      });
+    }
+  }, [loc.pathname]);
+
   return (
     <>
       {OKtoDisplay && (
