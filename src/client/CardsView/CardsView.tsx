@@ -19,6 +19,7 @@ const CardsView = (props: Types.NO_PROPS) => {
         console.log(err);
       });
   }, []);
+
   return (
     <div className="d-flex flex-column justify-content-center align-items-center">
       <div className="d-flex flex-wrap justify-content-center">

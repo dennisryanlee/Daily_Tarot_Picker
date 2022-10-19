@@ -14,6 +14,7 @@ const SingleDiary = (props: Types.NO_PROPS) => {
   const loc = useLocation();
   const nav = useNavigate();
 
+  // destructure the state passed from the previous view
   const { diary, tarotCard } = loc.state as passedState;
 
   return (
