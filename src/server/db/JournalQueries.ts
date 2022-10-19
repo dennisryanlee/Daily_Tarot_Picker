@@ -6,7 +6,7 @@ const createNewJournal = (newJournalInfo: Types.IJournalInfo) => Query(`INSERT I
 
 // reads all journals by the user
 const readAllJournals = (user_id: number) =>
-  Query<Types.IJournalInfo[]>(`SELECT * FROM journal WHERE user_id = ?`, [user_id]);
+  Query<Types.IJournalInfo[]>(`SELECT * FROM journal WHERE user_id = ? ORDER BY created_at DESC `, [user_id]);
 
 // reads a journal from a specific user on a specific date
 const readOneJournal = ({ user_id, journal_id }: Types.IJournalQuery) =>

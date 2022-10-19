@@ -56,7 +56,7 @@ export interface IJournalInfo {
   entry_one: string;
   entry_two: string;
   entry_three: string;
-  created_at?: string;
+  created_at?: Date;
 }
 
 export interface IJournalQuery {
