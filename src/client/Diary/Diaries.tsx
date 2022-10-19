@@ -9,12 +9,13 @@ const Diaries = (props: Types.DiariesCompProps) => {
   // holds journals to display after filtering
   const [journalsToDisplay, setjournalsToDisplay] = useState<Types.IJournalInfo[]>([]);
   const [suitesToShow, setSuitesToShow] = useState<string[]>(["ar", "pe", "sw", "cu", "wa"]);
+  const [showFilters, setShowFilters] = useState<boolean>(false);
 
   /**
    * options to sort by:
    *
    * specific card drawn
-   * a suit of cards
+   ** (DONE)a suit of cards
    * single date
    * date range past week / month
    * text in journal
@@ -75,44 +76,57 @@ const Diaries = (props: Types.DiariesCompProps) => {
 
   return (
     <>
-      <div id="filter-holder" className="row mt-3 justify-content-center">
-        <div className="card shadow col-8">
-          <div className="cardbody">
-            <button
-              className={`btn btn-${suitesToShow.includes("ar") ? "success" : "danger"}`}
-              onClick={() => toggleSuiteFilter("ar")}
-            >
-              Arcana
-            </button>
-            <button
-              className={`btn btn-${suitesToShow.includes("pe") ? "success" : "danger"}`}
-              onClick={() => toggleSuiteFilter("pe")}
-            >
-              Pentacles
-            </button>
-            <button
-              className={`btn btn-${suitesToShow.includes("sw") ? "success" : "danger"}`}
-              onClick={() => toggleSuiteFilter("sw")}
-            >
-              Swords
-            </button>
-            <button
-              className={`btn btn-${suitesToShow.includes("cu") ? "success" : "danger"}`}
-              onClick={() => toggleSuiteFilter("cu")}
-            >
-              Cups
-            </button>
-            <button
-              className={`btn btn-${suitesToShow.includes("wa") ? "success" : "danger"}`}
-              onClick={() => toggleSuiteFilter("wa")}
-            >
-              Wands
-            </button>
-          </div>
-        </div>
+      <div className="row mt-3 justify-content-center">
+        <button className="col-1 btn btn-primary" onClick={() => setShowFilters(!showFilters)}>
+          {showFilters ? "Hide Filters" : "Show Filters"}
+        </button>
       </div>
 
-      <div id="diary-holder" className="d-flex mt-4">
+      {showFilters && (
+        <div className="row mt-3 justify-content-center">
+          <div className="card shadow col-8">
+            <div className="cardbody">
+              <div className="row justify-content-center">
+                {/* <span className="col-2">
+                <p>Filter by Suite</p>
+              </span> */}
+                <button
+                  className={`col-2 btn btn-${suitesToShow.includes("ar") ? "success" : "danger"}`}
+                  onClick={() => toggleSuiteFilter("ar")}
+                >
+                  Arcana
+                </button>
+                <button
+                  className={`col-2 btn btn-${suitesToShow.includes("pe") ? "success" : "danger"}`}
+                  onClick={() => toggleSuiteFilter("pe")}
+                >
+                  Pentacles
+                </button>
+                <button
+                  className={`col-2 btn btn-${suitesToShow.includes("sw") ? "success" : "danger"}`}
+                  onClick={() => toggleSuiteFilter("sw")}
+                >
+                  Swords
+                </button>
+                <button
+                  className={`col-2 btn btn-${suitesToShow.includes("cu") ? "success" : "danger"}`}
+                  onClick={() => toggleSuiteFilter("cu")}
+                >
+                  Cups
+                </button>
+                <button
+                  className={`col-2 btn btn-${suitesToShow.includes("wa") ? "success" : "danger"}`}
+                  onClick={() => toggleSuiteFilter("wa")}
+                >
+                  Wands
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      <div className="d-flex mt-4">
         {allJournals && (
           <div className="row justify-content-center">
             {journalsToDisplay.map((diary) => (
