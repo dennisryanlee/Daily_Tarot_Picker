@@ -75,7 +75,7 @@ const Diaries = (props: Types.DiariesCompProps) => {
 
   return (
     <>
-      <div className="row mt-3 justify-content-center">
+      <div id="filter-holder" className="row mt-3 justify-content-center">
         <div className="card shadow col-8">
           <div className="cardbody">
             <button
@@ -112,7 +112,7 @@ const Diaries = (props: Types.DiariesCompProps) => {
         </div>
       </div>
 
-      <div className="d-flex mt-4">
+      <div id="diary-holder" className="d-flex mt-4">
         {allJournals && (
           <div className="row justify-content-center">
             {journalsToDisplay.map((diary) => (

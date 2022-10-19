@@ -1,6 +1,6 @@
 import * as React from "react";
 import { useState, useEffect } from "react";
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useLocation } from "react-router-dom";
 import * as Types from "../../Types";
 import DailyDraw from "./DailyDraw/DailyDrawView";
 import Loginpage from "./Login_Register/Login";
@@ -11,6 +11,11 @@ import CardsDetails from "./CardsView/CardsDetails";
 import SingleDiary from "./Diary/SingleDiary";
 
 const App = (props: Types.NO_PROPS) => {
+  const loc = useLocation();
+  // scroll to the top of the page when changing views
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [loc.pathname]);
   return (
     <main>
       <Navbar />
