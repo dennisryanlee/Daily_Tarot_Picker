@@ -42,23 +42,25 @@ const CardsDetails = (props: Types.NO_PROPS) => {
       });
   }, []);
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center">
-      <button type="button" className={`btn btn-primary my-3`} onClick={() => goToCards()}>
+    <div className="row justify-content-center align-items-center">
+      <button
+        type="button"
+        className="btn btn-primary col-8 col-md-1  btn btn-primary mx-2 my-3"
+        onClick={() => goToCards()}
+      >
         Back to Cards
       </button>
-      <div className="d-flex flex-column justify-content-center align-items-center">
-        <div className="d-flex flex-wrap justify-content-center">
-          <div className="card col-6 m-3">
-            <img src={`${tarotCard.url}`} className="card-img-top" alt={`${tarotCard.name}`} />
-            <div className="card-body">
-              <DescriptionBox tarotCard={tarotCard} num={"one"} />
-              <HR_Component />
-              <DescriptionBox tarotCard={tarotCard} num={"two"} />
-              <div className="d-flex justify-content-center">
-                <button type="button" className={`btn btn-primary my-3`} onClick={() => goToCards()}>
-                  Back to Cards
-                </button>
-              </div>
+      <div className="row justify-content-center">
+        <div className="card col-6 m-3">
+          <img src={`${tarotCard.url}`} className="card-img-top" alt={`${tarotCard.name}`} />
+          <div className="card-body">
+            <DescriptionBox tarotCard={tarotCard} num={"one"} />
+            <HR_Component />
+            <DescriptionBox tarotCard={tarotCard} num={"two"} />
+            <div className="d-flex justify-content-center">
+              <button type="button" className={`btn btn-primary my-3`} onClick={() => goToCards()}>
+                Back to Cards
+              </button>
             </div>
           </div>
         </div>

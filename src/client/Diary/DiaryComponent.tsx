@@ -45,10 +45,11 @@ const JournalComponent = ({ diary }: Types.DiaryCompProps) => {
   return (
     <>
       {/* {JSON.stringify({ tarotCard, diary })} */}
-      <div className="card col-2 m-2">
+      <div className="card col-10 col-sm-4 col-md-3 col-lg-2 m-2">
         <h6>
           {getNiceDate(diary.created_at!)} | {tarotCard.name}
         </h6>
+
         <img src={`${tarotCard.url}`} className="card-img-top" alt={`${tarotCard.name}`} width="300" height="521" />
         <div className="card-body">
           <h5 className="card-title">Entry 1</h5>

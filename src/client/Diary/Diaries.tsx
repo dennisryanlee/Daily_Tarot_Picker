@@ -159,7 +159,7 @@ const Diaries = (props: Types.DiariesCompProps) => {
   return (
     <>
       <div className="row mt-3 justify-content-center">
-        <button className="col-1 btn btn-primary" onClick={() => setShowFilters(!showFilters)}>
+        <button className="col-8 col-md-1 mx-2 btn btn-primary" onClick={() => setShowFilters(!showFilters)}>
           {showFilters ? "Hide Filters" : "Show Filters"}
         </button>
       </div>

@@ -22,22 +22,25 @@ const SingleDiary = (props: Types.NO_PROPS) => {
       {/* {JSON.stringify({ tarotCard, diary })} */}
       <div className="container">
         <div className="card mt-4">
-          <h6 className="text-center mt-2 display-6">
-            {getNiceDate(diary.created_at!)} | {tarotCard.name}
-            <span className="ms-4">
+          <div className="row">
+            <div className="col-8">
+              <h6 className="text-center mt-2 display-6">
+                {getNiceDate(diary.created_at!)} | {tarotCard.name}
+              </h6>
+            </div>
+            <div className="col-4 mt-2 d-flex justify-content-end">
               <button className="btn btn-primary" onClick={() => nav(-1)}>
                 Back
               </button>
-            </span>
-          </h6>
-
+            </div>
+          </div>
           <div className="row">
-            <div className="col-6">
+            <div className="col-12 col-md-6">
               <div className="shadow-lg">
-                <img src={`${tarotCard.url}`} className="card-img-top" alt={`${tarotCard.name}`} />
+                <img src={`${tarotCard.url}`} className="card-img-top img-fluid" alt={`${tarotCard.name}`} />
               </div>
             </div>
-            <div className="col-6 ">
+            <div className="col-12 col-md-6">
               <div className="shadow-lg">
                 <div className="card-body h-100">
                   <h5 className="card-title">Entry 1</h5>

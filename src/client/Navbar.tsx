@@ -34,30 +34,30 @@ const Navbar = (props: Types.NO_PROPS) => {
   return (
     <>
       {OKtoDisplay && (
-        <div className="d-flex  justify-content-center mt-3">
+        <div className="row justify-content-center mt-3">
           <button
             type="button"
-            className={`btn btn-${loc.pathname != "/dailydraw" ? "primary" : "warning"} col-1 mx-2`}
+            className={`btn btn-${loc.pathname != "/dailydraw" ? "primary" : "warning"} col-8 col-md-1 mx-2`}
             onClick={() => goToDailydraw()}
           >
             New Journal
           </button>
           <button
             type="button"
-            className={`btn btn-${loc.pathname != "/diary" ? "primary" : "warning"} col-1 mx-2`}
+            className={`btn btn-${loc.pathname != "/diary" ? "primary" : "warning"} col-8 col-md-1 mx-2`}
             onClick={() => goToJournals()}
           >
             Diaries
           </button>
           <button
             type="button"
-            className={`btn btn-${loc.pathname != "/cards" ? "primary" : "warning"} col-1 mx-2`}
+            className={`btn btn-${loc.pathname != "/cards" ? "primary" : "warning"} col-8 col-md-1 mx-2`}
             onClick={() => goToCards()}
           >
             View Cards
           </button>
 
-          <button type="button" className={`btn btn-primary col-1 mx-2`} onClick={() => goToLogin()}>
+          <button type="button" className={`btn btn-primary col-8 col-md-1 mx-2`} onClick={() => goToLogin()}>
             Logout
           </button>
         </div>

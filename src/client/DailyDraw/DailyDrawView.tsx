@@ -130,7 +130,7 @@ const DailyDraw = (props: Types.DailyDrawCompProps) => {
       </div>
 
       <div className="text-center">
-        <button className="btn btn-primary mt-4" disabled={!tarotCard.name} onClick={() => saveJournal()}>
+        <button className="btn btn-primary mt-2 mb-5" disabled={!tarotCard.name} onClick={() => saveJournal()}>
           Save
         </button>
       </div>

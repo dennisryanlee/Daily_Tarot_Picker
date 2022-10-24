@@ -21,20 +21,18 @@ const CardsView = (props: Types.NO_PROPS) => {
   }, []);
 
   return (
-    <div className="d-flex flex-column justify-content-center align-items-center">
-      <div className="d-flex flex-wrap justify-content-center">
-        {tarotCards.map((card) => (
-          <div className="card col-2 m-3 shadow" key={card.name_short}>
-            <img src={`${card.url}`} className="card-img-top" alt={`${card.name}`} width="300" height="521" />
-            <div className="card-body">
-              <h5 className="card-title">{card.name}</h5>
-              <Link to={`/cards/${card.name_short}`} className="btn btn-primary">
-                View descriptions
-              </Link>
-            </div>
+    <div className="row justify-content-center">
+      {tarotCards.map((card) => (
+        <div className="card col-9 col-sm-4 col-md-3 col-lg-2 m-3 shadow" key={card.name_short}>
+          <img src={`${card.url}`} className="card-img-top" alt={`${card.name}`} width="300" height="521" />
+          <div className="card-body">
+            <h5 className="card-title">{card.name}</h5>
+            <Link to={`/cards/${card.name_short}`} className="btn btn-primary">
+              View descriptions
+            </Link>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   );
 };
