@@ -167,47 +167,72 @@ const Diaries = (props: Types.DiariesCompProps) => {
       {showFilters && (
         <div className="row mt-3 justify-content-center">
           <div className="card shadow col-8">
-            <div className="cardbody">
-              <div className="row justify-content-center">
-                <button
-                  className={`col-2 mx-1 btn btn-${suitsToShow.includes("ar") ? "success" : "danger"}`}
-                  onClick={() => toggleSuitFilter("ar")}
-                >
-                  Arcana
-                </button>
-                <button
-                  className={`col-2 mx-1 btn btn-${suitsToShow.includes("pe") ? "success" : "danger"}`}
-                  onClick={() => toggleSuitFilter("pe")}
-                >
-                  Pentacles
-                </button>
-                <button
-                  className={`col-2 mx-1 btn btn-${suitsToShow.includes("sw") ? "success" : "danger"}`}
-                  onClick={() => toggleSuitFilter("sw")}
-                >
-                  Swords
-                </button>
-                <button
-                  className={`col-2 mx-1 btn btn-${suitsToShow.includes("cu") ? "success" : "danger"}`}
-                  onClick={() => toggleSuitFilter("cu")}
-                >
-                  Cups
-                </button>
-                <button
-                  className={`col-2 mx-1 btn btn-${suitsToShow.includes("wa") ? "success" : "danger"}`}
-                  onClick={() => toggleSuitFilter("wa")}
-                >
-                  Wands
-                </button>
+            <div className="row justify-content-center">
+              <div className="col-6">
+                <div id="filters-buttons" className="d-flex justify-content-center">
+                  <button
+                    className={`col-2 mx-1 btn btn-${suitsToShow.includes("ar") ? "success" : "danger"}`}
+                    onClick={() => toggleSuitFilter("ar")}
+                  >
+                    Arcana
+                  </button>
+                  <button
+                    className={`col-2 mx-1 btn btn-${suitsToShow.includes("pe") ? "success" : "danger"}`}
+                    onClick={() => toggleSuitFilter("pe")}
+                  >
+                    Pentacles
+                  </button>
+                  <button
+                    className={`col-2 mx-1 btn btn-${suitsToShow.includes("sw") ? "success" : "danger"}`}
+                    onClick={() => toggleSuitFilter("sw")}
+                  >
+                    Swords
+                  </button>
+                  <button
+                    className={`col-2 mx-1 btn btn-${suitsToShow.includes("cu") ? "success" : "danger"}`}
+                    onClick={() => toggleSuitFilter("cu")}
+                  >
+                    Cups
+                  </button>
+                  <button
+                    className={`col-2 mx-1 btn btn-${suitsToShow.includes("wa") ? "success" : "danger"}`}
+                    onClick={() => toggleSuitFilter("wa")}
+                  >
+                    Wands
+                  </button>
+                </div>
+              </div>
+              <div className="col-6">
+                <div className="row">
+                  <div id="filters-singlecard" className="col-5">
+                    <Select onChange={handleSelectorFilter} value={cardToShow} options={options} />
+                  </div>
+
+                  <div className="col-7">
+                    <div id="filters-start-date" className="row justify-content-evenly">
+                      <div className="col-4">
+                        <div className="text-end">Start: </div>
+                      </div>
+                      <div className="col-8">
+                        <DatePicker name="date" selected={startDate} onChange={setStartDate} />
+                      </div>
+                    </div>
+
+                    <div id="filters-end-date" className="row justify-content-evenly">
+                      <div className="col-4">
+                        <div className="text-end">End: </div>
+                      </div>
+                      <div className="col-8">
+                        <DatePicker selected={endDate} onChange={setendDate} />
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-            <div className="cardbody">
-              <Select onChange={handleSelectorFilter} value={cardToShow} options={options} />
-            </div>
-            <div className="cardbody">
-              <DatePicker selected={startDate} onChange={setStartDate} />
-              <DatePicker selected={endDate} onChange={setendDate} />
-              <button className="btn btn-primary" onClick={clearAllFilters}>
+
+            <div className="row justify-content-center">
+              <button className="btn btn-primary col-2" onClick={clearAllFilters}>
                 Reset Filters
               </button>
             </div>
