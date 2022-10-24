@@ -17,7 +17,7 @@ interface selectorItem {
   label: string;
 }
 
-const NOW = new Date();
+let NOW = new Date();
 
 const Diaries = (props: Types.DiariesCompProps) => {
   // holds all journals
@@ -44,9 +44,17 @@ const Diaries = (props: Types.DiariesCompProps) => {
    * text in journal
    */
 
+  /**
+   * remove all filters
+   */
   const clearAllFilters = () => {
+    // remove the filtering criteria
     setSuitsToShow(DEFAULT_SUITS);
     setCardToShow(EMPTY_SELECTOR);
+    setStartDate(new Date());
+    setendDate(new Date());
+    // reassign now to allow for future date filtering
+    NOW = new Date();
   };
 
   // toggles a suit in the suitsToHide array
@@ -103,8 +111,8 @@ const Diaries = (props: Types.DiariesCompProps) => {
   // this useEffect refreshes the page when user wants to filter based on suit or card
   useEffect(() => {
     // determine if the new date chosen is not the same as the current date
-    const startHasUpdated = Math.abs(NOW.getTime() - startDate!.getTime()) > 5000;
-    const endtHasUpdated = Math.abs(NOW.getTime() - endDate!.getTime()) > 5000;
+    const startHasUpdated = Math.abs(NOW.getTime() - startDate!.getTime()) > 1000;
+    const endtHasUpdated = Math.abs(NOW.getTime() - endDate!.getTime()) > 1000;
 
     // declare a filtered array to display later
     let filtered: Types.IJournalInfo[] = [];
@@ -123,14 +131,24 @@ const Diaries = (props: Types.DiariesCompProps) => {
 
     // apply date filters
     if (startHasUpdated || endtHasUpdated) {
-      let first = startDate!.setHours(0);
-      const last = endDate!.getTime();
+      // set the dates, overwriting the current times as appropriate
+      let tempFirst = new Date(startDate!);
+      tempFirst.setHours(0);
+      tempFirst.setMinutes(0);
+      const first = tempFirst.getTime();
+
+      let tempEndDate = new Date(endDate!);
+      tempEndDate.setHours(23);
+      tempEndDate.setMinutes(59);
+      const last = tempEndDate!.getTime();
+
+      // start and end represent the date ranges, accounting for being entered out of order
       const start = first < last ? first : last;
       const end = first < last ? last : first;
 
       filtered = filtered.filter((journal) => {
         const current = new Date(journal.created_at!).getTime();
-        console.log({ time: new Date(journal.created_at!), startDate, endDate });
+        console.log({ time: new Date(journal.created_at!), tempFirst, tempEndDate });
         return current > start && current <= end;
       });
     }
@@ -189,6 +207,9 @@ const Diaries = (props: Types.DiariesCompProps) => {
             <div className="cardbody">
               <DatePicker selected={startDate} onChange={setStartDate} />
               <DatePicker selected={endDate} onChange={setendDate} />
+              <button className="btn btn-primary" onClick={clearAllFilters}>
+                Reset Filters
+              </button>
             </div>
           </div>
         </div>

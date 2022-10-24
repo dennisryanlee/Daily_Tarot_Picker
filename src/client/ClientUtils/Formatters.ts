@@ -1,5 +1,5 @@
 // prettifies the date from the database
-export const getNiceDate = (date: string) => {
+export const getNiceDate = (date: Date) => {
   // "MonthAsText, day, year"
   const dateObject = new Date(date);
   const options = { year: "numeric", month: "long", day: "numeric" };
