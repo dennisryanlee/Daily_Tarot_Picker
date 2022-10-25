@@ -3,7 +3,7 @@
 
 import * as express from "express";
 import DB from "../../db";
-import { generateHash, generateToken } from "../../middlewares/Passwords";
+import { generateHash, generateToken } from "../../middlewares/passwords";
 import * as Passport from "passport";
 
 const authRouter = express.Router();
