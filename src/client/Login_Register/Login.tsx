@@ -7,9 +7,9 @@ const Loginpage = (props: Types.NO_PROPS) => {
   const nav = useNavigate();
 
   // in development, login as `bigwow` with pass = 1111111111
-  const [password, setPassword] = useState<string>(process.env.NODE_ENV === "production" ? "" : "1111111111");
-  const [password_B, setPassword_B] = useState<string>(process.env.NODE_ENV === "production" ? "" : "1111111111");
-  const [username, setUsername] = useState<string>(process.env.NODE_ENV === "production" ? "" : "bigwow");
+  const [password, setPassword] = useState<string>("");
+  const [password_B, setPassword_B] = useState<string>("");
+  const [username, setUsername] = useState<string>("");
 
   const [isNewUser, setIsNewUser] = useState<boolean>(false);
 
