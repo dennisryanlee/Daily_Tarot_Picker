@@ -9,12 +9,10 @@ export const DB_CONFIG = {
   database: process.env.DB_DATABASE,
 };
 
+export const CLEAR_DB_CONNECTION_STRING = process.env.CLEARDB_DATABASE_URL;
+
 export const JWT_CONFIG = { jwtSecretKey: process.env.JWT_SECRET_KEY! };
 
-export const GITHUB_CONFIG = {
-  client_id: process.env.GITHUB_CLIENT_ID!,
-  secret: Number(process.env.GITHUB_SECRET_KEY!),
-};
 /**
  *This is how we hide the database access info, while still being able to use it
  */

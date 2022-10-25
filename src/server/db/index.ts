@@ -2,7 +2,7 @@ import * as mysql from "mysql"; // import mysql so that we can make requests fro
 import Journals from "./JournalQueries";
 import Login from "./LoginQueries";
 import * as dotenv from "dotenv";
-import { DB_CONFIG } from "../config"; // import the database config object containing the connection info
+import { CLEAR_DB_CONNECTION_STRING, DB_CONFIG } from "../config"; // import the database config object containing the connection info
 
 dotenv.config();
 
@@ -10,7 +10,7 @@ dotenv.config();
 
 // creates a database connection with the following properties
 
-export const Connection = mysql.createPool(DB_CONFIG);
+export const Connection = mysql.createPool(CLEAR_DB_CONNECTION_STRING || DB_CONFIG);
 
 export const Query = <T = mysql.OkPacket>(query: string, values?: unknown[]) => {
   return new Promise<T>((resolve, reject) => {
