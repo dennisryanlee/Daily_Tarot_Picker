@@ -5,7 +5,7 @@ import * as PassportLocal from "passport-local";
 import * as Types from "../../../Types";
 import * as CONFIG from "../config";
 import { Application } from "express";
-import { compareHash } from "./Passwords";
+import { compareHash } from "./passwords";
 import Query from "../db";
 
 export function configurePassport(app: Application) {
